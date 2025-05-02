@@ -48,16 +48,19 @@
     .youtube-link { margin: 20px 0; }
     .youtube-link a { color: #ff0000; text-decoration: none; font-size: 1em; }
     .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; }
-    .modal-content { background: white; width: 90%; max-width: 350px; margin: 20% auto; padding: 20px; border-radius: 10px; position: relative; }
+    .modal, .privacy-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; }
+    .modal-content, .privacy-modal-content { background: white; width: 90%; max-width: 350px; margin: 20% auto; padding: 20px; border-radius: 10px; position: relative; }
     .close { position: absolute; right: 15px; top: 10px; font-size: 20px; cursor: pointer; }
-    .modal input, .modal select { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; }
-    .modal button { width: 100%; }
+    .modal input, .modal select, .modal button, .modal label { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; box-sizing: border-box; }
+    .modal input[type="checkbox"] { width: auto; margin-right: 10px; }
+    .modal label { display: flex; align-items: center; padding: 0; border: none; }
+    .privacy-link { color: #ff0000; text-decoration: underline; cursor: pointer; margin-left: 5px; }
+    .privacy-modal-content p { font-size: 0.9em; text-align: left; line-height: 1.4; }
     img { max-width: 100%; height: auto; }
     @media (max-width: 768px) {
       .hero img { max-height: 250px; }
       .apply-button, .cta-button { width: 100%; }
-      .modal-content { margin: 30% auto; }
+      .modal-content, .privacy-modal-content { margin: 30% auto; }
       .collage-img { width: 45%; max-height: 120px; }
     }
     @media (max-width: 375px) {
@@ -108,7 +111,7 @@
     <h2>프로그램 개요</h2>
     <table>
       <tr><td>참가방법</td><td>신청 후 문자 안내</td></tr>
-<tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
+      <tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
       <tr><td>취소</td><td>3일 전 가능</td></tr>
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
       <tr><td>체험</td><td>안전 교육, 배타기, 소감나누기(2시간)</td></tr>
@@ -150,6 +153,13 @@
       <form id="signupForm">
         <input type="text" id="name" placeholder="이름" required>
         <input type="tel" id="phone" placeholder="연락처" required>
+        <select id="childAge" required>
+          <option value="" disabled selected>자녀 나이</option>
+          <option value="8">8세</option>
+          <option value="9-10">9~10세</option>
+          <option value="11-12">11~12세</option>
+          <option value="13+">13세 이상</option>
+        </select>
         <select id="participants" required>
           <option value="" disabled selected>참여 인원</option>
           <option value="1">1인 (3만원)</option>
@@ -157,8 +167,25 @@
           <option value="3">3인 (9만원)</option>
         </select>
         <input type="hidden" id="date" value="">
+        <label>
+          <input type="checkbox" id="privacyAgree" required>
+          개인정보 수집, 이용에 동의합니다 (필수, <span class="privacy-link" onclick="openPrivacyModal()">상세보기</span>)
+        </label>
         <button type="submit" class="cta-button">신청 완료</button>
       </form>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacyModal" class="privacy-modal">
+    <div class="privacy-modal-content">
+      <span class="close" onclick="closePrivacyModal()">×</span>
+      <h2>개인정보 수집 및 이용</h2>
+      <p>산소모험스쿨은(는) 고지사항 전달을 위해 아래와 같이 개인정보를 수집, 이용합니다.</p>
+      <p>1) 개인정보 수집 목적: 회원관리, 고객 상담, 고지사항 전달<br>
+         2) 개인정보 수집 항목: 이름, 전화번호, 이메일<br>
+         3) 보유 및 이용기간: 6개월<br>
+         * 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며, 동의를 거부할 경우에는 서비스 제공이 불가합니다.</p>
     </div>
   </div>
 
@@ -171,7 +198,7 @@
     emailjs.init("pdoL1uaTJvcQun7eE");
     console.log('EmailJS initialized');
 
-    // 모달 열기/닫기
+    // 신청 모달 열기/닫기
     function openModal(date) {
       console.log('openModal called with date:', date);
       const modal = document.getElementById('modal');
@@ -194,6 +221,27 @@
       }
     }
 
+    // 개인정보 모달 열기/닫기
+    function openPrivacyModal() {
+      console.log('openPrivacyModal called');
+      const privacyModal = document.getElementById('privacyModal');
+      if (privacyModal) {
+        privacyModal.style.display = 'block';
+      } else {
+        console.error('Privacy modal not found');
+      }
+    }
+
+    function closePrivacyModal() {
+      console.log('closePrivacyModal called');
+      const privacyModal = document.getElementById('privacyModal');
+      if (privacyModal) {
+        privacyModal.style.display = 'none';
+      } else {
+        console.error('Privacy modal not found');
+      }
+    }
+
     // 폼 제출
     const form = document.getElementById('signupForm');
     if (form) {
@@ -202,16 +250,25 @@
         console.log('Form submitted');
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
+        const childAge = document.getElementById('childAge').value;
         const participants = document.getElementById('participants').value;
         const date = document.getElementById('date').value;
-        console.log('Form data:', { name, phone, participants, date });
+        const privacyAgree = document.getElementById('privacyAgree').checked;
+        console.log('Form data:', { name, phone, childAge, participants, date, privacyAgree });
+
+        if (!privacyAgree) {
+          alert('개인정보 수집 및 이용에 동의해야 신청할 수 있습니다.');
+          return;
+        }
 
         // EmailJS로 이메일 전송
-        emailjs.send('service_abc123', 'template_xyz789', {
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
           name: name,
           phone: phone,
+          child_age: childAge,
           participants: participants,
-          date: date
+          date: date,
+          privacy_agree: privacyAgree
         }).then(() => {
           console.log('Email sent successfully');
           alert('신청이 완료되었습니다! 곧 연락드립니다.');
