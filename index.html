@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카누 배타기 체험</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; background: #f4f4f4; font-size: 16px; line-height: 1.5; }
+    .hero { padding: 20px; }
+    .hero img { width: 100%; height: auto; max-height: 300px; object-fit: cover; border-radius: 10px; }
+    .apply-section { padding: 20px; background: #fff; }
+    .apply-section h2 { font-size: 1.5em; margin: 0 0 10px; }
+    .apply-section p { font-size: 1em; color: #555; }
+    .apply-button { background: #ff4500; color: white; padding: 12px 20px; font-size: 1em; border: none; cursor: pointer; border-radius: 5px; margin: 10px; display: inline-block; min-width: 200px; }
+    .section { padding: 20px; max-width: 600px; margin: auto; }
+    .reviews { background: #f9f9f9; }
+    .review { margin: 10px; font-style: italic; font-size: 0.9em; }
+    .overview table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9em; }
+    .overview td { border: 1px solid #ddd; padding: 8px; }
+    .youtube-link { margin: 20px 0; }
+    .youtube-link a { color: #ff0000; text-decoration: none; font-size: 1em; }
+    .cta-button { background: #ff4500; color: white; padding: 12px 20px; font-size: 1em; border: none; cursor: pointer; border-radius: 5px; }
+    .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; }
+    .modal-content { background: white; width: 90%; max-width: 350px; margin: 20% auto; padding: 20px; border-radius: 10px; position: relative; }
+    .close { position: absolute; right: 15px; top: 10px; font-size: 20px; cursor: pointer; }
+    .modal input, .modal select { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; }
+    .modal button { width: 100%; }
+    img { max-width: 100%; height: auto; }
+    @media (max-width: 768px) {
+      .hero img { max-height: 250px; }
+      .apply-button { width: 100%; }
+      .modal-content { margin: 30% auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Image -->
+  <div class="hero">
+    <img src="https://i.imgur.com/wkR0xdZ.jpeg="카누 체험 대표 이미지">
+  </div>
+
+  <!-- Apply Section -->
+  <div class="apply-section">
+<img src="https://i.imgur.com/B4hJt3F.png">    
+<h2>일일 캠프 신청하기</h2>
+    <p>(원하는 날짜를 클릭해주세요)</p>
+    <button class="apply-button" onclick="openModal('5/5(월) PM 3~5시')">5/5(월) PM 3~5시 신청하기</button>
+    <button class="apply-button" onclick="openModal('5/6(화) PM 3~5시')">5/6(화) PM 3~5시 신청하기</button>
+  </div>
+
+  <!-- Core Message -->
+  <div class="section">
+    <img src="https://i.imgur.com/E91Yb3J.png">
+  </div>
+
+  <!-- Reviews -->
+<div class="section reviews">
+  <h2>참여자 후기</h2>
+  <div class="review"><p>"진심으로 수업해주시는 모습에 감동했습니다. 안전과 재미를 위해 수고해주셔 감사드려요" - 김○○</p></div>
+    <div class="review"><p>"아들이 너무 좋아해서 뿌듯합니다!" - 박○○</p></div>
+<div class="review"><p>"아이들이 다음에 또 가고싶다고 하네요. 좋은 경험, 좋은 인연 감사합니다." - 최○○</p></div>
+<div class="review"><p>"고요한곳에서 잘 놀았어요. 
+자연에 편하게 몸을 맡기는 경험이었어요." - 한○○</p></div>
+<div class="review"><p>"겁 많은 5,6학년 두 자녀가 너무 즐겁게 탔네요. 아이가 또 신청해달라고 하네요♡♡" - 김○○</p></div>
+  <div class="collage">
+    <img src="https://i.imgur.com/SFGRjUO.jpeg" alt="후기 이미지 1" class="collage-img">
+    <img src="https://i.imgur.com/LMd8soC.jpeg" alt="후기 이미지 2" class="collage-img">
+    <img src="https://i.imgur.com/9PgwdeI.jpeg" alt="후기 이미지 3" class="collage-img">
+    <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
+  </div>
+</div>
+
+<style>
+  .reviews { background: #f9f9f9; padding: 20px; }
+  .reviews h2 { font-size: 1.5em; margin: 0 0 10px; }
+  .review { margin: 10px; font-style: italic; font-size: 0.9em; color: #333; }
+  .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
+  .collage-img { 
+    width: 45%; 
+    max-height: 150px; 
+    object-fit: cover; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    transition: transform 0.3s; 
+  }
+  .collage-img:nth-child(1) { transform: rotate(-5deg); }
+  .collage-img:nth-child(2) { transform: rotate(5deg); }
+  .collage-img:nth-child(3) { transform: rotate(3deg); }
+  .collage-img:nth-child(4) { transform: rotate(-3deg); }
+  .collage-img:hover { transform: scale(1.1) rotate(0deg); }
+  @media (max-width: 768px) {
+    .collage-img { width: 45%; max-height: 120px; }
+  }
+  @media (max-width: 375px) {
+    .collage-img { width: 48%; max-height: 100px; }
+  }
+</style>
+
+  <!-- Program Overview -->
+  <div class="section overview">
+    <img src="https://i.imgur.com/KYLkT6p.jpeg">
+<img src="https://i.imgur.com/6cBMzrf.jpeg">
+
+    <h2>프로그램 개요</h2>
+    <table>
+      <tr><td>참가방법</td><td>신청 후 문자 안내</td></tr>
+      <tr><td>취소</td><td>3일 전 가능</td></tr>
+      <tr><td>비용</td><td>1인 3만원, 2인 5만원, 3인 6만원</td></tr>
+      <tr><td>체험</td><td>안전 교육, 배타기, 명상</td></tr>
+    </table>
+  </div>
+
+  <!-- YouTube Link -->
+  <div class="section youtube-link">
+    <h2>체험 미리보기</h2>
+    <a href="https://youtu.be/yXmGzKg2sqY?si=rJSwHyEgqzzGN8jY" target="_blank">유튜브 영상 보러가기</a>
+  </div>
+
+  <!-- Team -->
+  <div class="section">
+    <h2>운영진</h2>
+    <p>5년 경력 강사, 안전 자격증 보유</p>
+    <img src="https://i.imgur.com/QHYwKDp.jpeg">
+<img src="https://i.imgur.com/4lfHYJv.png">
+<img src="https://i.imgur.com/mUH3CBw.jpeg">
+  </div>
+
+<!-- Final CTA (하단 버튼) -->
+<div class="section">
+  <button class="cta-button" onclick="openModal('5/5(월) PM 3~5시')">5/5(월) PM 3~5시 신청하기</button>
+  <button class="cta-button" onclick="openModal('5/6(화) PM 3~5시')">5/6(화) PM 3~5시 신청하기</button>
+</div>
+
+<!-- Floating CTA (고정 버튼) -->
+<div class="floating-cta">
+  <button class="cta-button" onclick="openModal('5/5(월) PM 3~5시')">5/5(월) 신청</button>
+  <button class="cta-button" onclick="openModal('5/6(화) PM 3~5시')">5/6(화) 신청</button>
+</div>
+
+
+  <!-- Modal Form -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2>체험 신청</h2>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="이름" required>
+        <input type="tel" id="phone" placeholder="연락처" required>
+        <select id="participants" required>
+          <option value="" disabled selected>참여 인원</option>
+          <option value="1">1인 (3만원)</option>
+          <option value="2">2인 (5만원)</option>
+          <option value="3">3인 (6만원)</option>
+        </select>
+        <input type="hidden" id="date" value="">
+        <button type="submit" class="cta-button">신청 완료</button>
+      </form>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // EmailJS 초기화
+  emailjs.init("pdoL1uaTJvcQun7eE"); // 사용자 User ID 유지
+
+  // 모달 열기/닫기
+  function openModal(date) {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('date').value = date;
+  }
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  // 폼 제출
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const participants = document.getElementById('participants').value;
+    const date = document.getElementById('date').value;
+
+    // EmailJS로 이메일 전송
+    emailjs.send('service_abc123', 'template_xyz789', {
+      name: name,
+      phone: phone,
+      participants: participants,
+      date: date
+    }).then(()  {
+      alert('신청이 완료되었습니다! 곧 연락드립니다.');
+      closeModal();
+      this.reset();
+    }).catch(() => {
+      alert('신청 실패, 다시 시도해주세요.');
+    });
+  });
+</script>
+</body>
+</html>
