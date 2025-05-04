@@ -56,6 +56,7 @@
     .modal label { display: flex; align-items: center; padding: 0; border: none; }
     .privacy-link { color: #ff0000; text-decoration: underline; cursor: pointer; margin-left: 5px; }
     .privacy-modal-content p { font-size: 0.9em; text-align: left; line-height: 1.4; }
+    .age-notice { color: #ff0000; font-size: 0.85em; margin: 8px 0; display: none; text-align: left; }
     img { max-width: 100%; height: auto; }
     @media (max-width: 768px) {
       .hero img { max-height: 250px; }
@@ -65,6 +66,7 @@
     }
     @media (max-width: 375px) {
       .collage-img { width: 48%; max-height: 100px; }
+      .age-notice { font-size: 0.8em; }
     }
   </style>
 </head>
@@ -76,11 +78,13 @@
 
   <!-- Apply Section -->
   <div class="apply-section">
-    <img src="https://i.imgur.com/B4hJt3F.png">    
+    <img src="https://i.imgur.com/9URE21J.jpeg">    
     <h2>일일 캠프 신청하기</h2>
     <p>(원하는 날짜를 클릭해주세요)</p>
-    <button class="apply-button" onclick="openModal('5/5(월) PM 3~5시')">5/10(토) PM 3~5시 신청하기</button>
-    <button class="apply-button" onclick="openModal('5/6(화) PM 3~5시')">5/11(일) PM 3~5시 신청하기</button>
+    <div id="apply-buttons">
+      <button class="apply-button" data-date-index="0"></button>
+      <button class="apply-button" data-date-index="1"></button>
+    </div>
   </div>
 
   <!-- Core Message -->
@@ -115,6 +119,7 @@
       <tr><td>취소</td><td>3일 전 가능</td></tr>
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
       <tr><td>체험</td><td>안전 교육, 배타기, 소감나누기(2시간)</td></tr>
+      <tr><td>참가 조건</td><td>8~9세는 부모 동반 필수</td></tr>
     </table>
   </div>
 
@@ -135,14 +140,18 @@
 
   <!-- Final CTA (하단 버튼) -->
   <div class="section">
-    <button class="cta-button" onclick="openModal('5/5(월) PM 3~5시')">5/10(토) PM 3~5시 신청하기</button>
-    <button class="cta-button" onclick="openModal('5/6(화) PM 3~5시')">5/11(일) PM 3~5시 신청하기</button>
+    <div id="final-cta-buttons">
+      <button class="cta-button" data-date-index="0"></button>
+      <button class="cta-button" data-date-index="1"></button>
+    </div>
   </div>
 
   <!-- Floating CTA (고정 버튼) -->
   <div class="floating-cta">
-    <button class="cta-button" onclick="openModal('5/5(월) PM 3~5시')">5/10(토) 신청</button>
-    <button class="cta-button" onclick="openModal('5/6(화) PM 3~5시')">5/11(일) 신청</button>
+    <div id="floating-cta-buttons">
+      <button class="cta-button" data-date-index="0"></button>
+      <button class="cta-button" data-date-index="1"></button>
+    </div>
   </div>
 
   <!-- Modal Form -->
@@ -160,6 +169,7 @@
           <option value="11-12">11~12세</option>
           <option value="13+">13세 이상</option>
         </select>
+        <p id="ageNotice" class="age-notice">* 8~9세 자녀는 부모 동반이 필수입니다.</p>
         <select id="participants" required>
           <option value="" disabled selected>참여 인원</option>
           <option value="1">1인 (3만원)</option>
@@ -198,6 +208,42 @@
     emailjs.init("pdoL1uaTJvcQun7eE");
     console.log('EmailJS initialized');
 
+    // 날짜 목록 (여기만 수정하면 모든 버튼에 반영됨)
+    const dates = ['5/10(토) PM 3~5시', '5/11(일) PM 3~5시'];
+
+    // 버튼 동적 렌더링
+    function renderButtons() {
+      // Apply Section 버튼
+      const applyButtons = document.querySelectorAll('#apply-buttons .apply-button');
+      applyButtons.forEach((button, index) => {
+        if (dates[index]) {
+          button.textContent = `${dates[index]} 신청하기`;
+          button.onclick = () => openModal(dates[index]);
+        }
+      });
+
+      // Final CTA 버튼
+      const finalCtaButtons = document.querySelectorAll('#final-cta-buttons .cta-button');
+      finalCtaButtons.forEach((button, index) => {
+        if (dates[index]) {
+          button.textContent = `${dates[index]} 신청하기`;
+          button.onclick = () => openModal(dates[index]);
+        }
+      });
+
+      // Floating CTA 버튼
+      const floatingCtaButtons = document.querySelectorAll('#floating-cta-buttons .cta-button');
+      floatingCtaButtons.forEach((button, index) => {
+        if (dates[index]) {
+          button.textContent = `${dates[index]} 신청`;
+          button.onclick = () => openModal(dates[index]);
+        }
+      });
+    }
+
+    // 페이지 로드 시 버튼 렌더링
+    document.addEventListener('DOMContentLoaded', renderButtons);
+
     // 신청 모달 열기/닫기
     function openModal(date) {
       console.log('openModal called with date:', date);
@@ -206,6 +252,7 @@
       if (modal && dateInput) {
         modal.style.display = 'block';
         dateInput.value = date;
+        updateAgeNotice(); // 모달 열릴 때 나이 안내 초기화
       } else {
         console.error('Modal or date input not found');
       }
@@ -242,6 +289,21 @@
       }
     }
 
+    // 나이 선택 시 부모 동반 안내 표시
+    function updateAgeNotice() {
+      const childAge = document.getElementById('childAge').value;
+      const ageNotice = document.getElementById('ageNotice');
+      if (ageNotice) {
+        if (childAge === '8' || childAge === '9-10') {
+          ageNotice.style.display = 'block';
+        } else {
+          ageNotice.style.display = 'none';
+        }
+      } else {
+        console.error('ageNotice not found');
+      }
+    }
+
     // 폼 제출
     const form = document.getElementById('signupForm');
     if (form) {
@@ -262,7 +324,8 @@
         }
 
         // EmailJS로 이메일 전송
-        emailjs.send('service_abc123', 'template_xyz789', {
+        // 실제 Service ID와 Template ID로 교체하세요: EmailJS 대시보드 > Email Services / Email Templates
+        emailjs.send('service_1a2b3c4', 'template_5x6y7z8', {
           name: name,
           phone: phone,
           child_age: childAge,
@@ -279,6 +342,14 @@
           alert('신청 실패, 다시 시도해주세요.');
         });
       });
+
+      // 나이 선택 변경 시 안내 업데이트
+      const childAgeSelect = document.getElementById('childAge');
+      if (childAgeSelect) {
+        childAgeSelect.addEventListener('change', updateAgeNotice);
+      } else {
+        console.error('childAge select not found');
+      }
     } else {
       console.error('signupForm not found');
     }
