@@ -8,7 +8,7 @@
     @font-face {
       font-family: 'SokchoBadaBatang';
       src: url('./fonts/SokchoBadaBatang.woff2') format('woff2'),
-     url('./fonts/SokchoBadaBatang.woff') format('woff');
+           url('./fonts/SokchoBadaBatang.woff') format('woff');
       font-weight: normal;
       font-style: normal;
     }
@@ -22,7 +22,6 @@
       line-height: 1.5; 
       color: #333333; 
     }
-    /* 모든 요소에 폰트 강제 적용 */
     button, input, select, textarea, table, th, td, details, summary {
       font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
@@ -34,6 +33,7 @@
       object-fit: cover; 
       border-radius: 10px; 
       border: 2px solid #5baed8; 
+      loading: lazy;
     }
     .hero-text { 
       position: absolute; 
@@ -44,54 +44,69 @@
       font-size: 1.5em; 
       font-weight: 700; 
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-      text-align: center; 
-      font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
+    }
+    .hero-banner { 
+      background: #5baed8; 
+      color: white; 
+      padding: 8px; 
+      font-size: 0.9em; 
+      border-radius: 5px; 
+      margin: 10px 0; 
     }
     .apply-section { padding: 20px; background: #ffffff; }
     .apply-section h2 { font-size: 1.6em; margin: 0 0 10px; font-weight: 700; }
-    .apply-section p { font-size: 1em; color: #555555; }
+    .info-box { 
+      background: #f5faff; 
+      padding: 10px; 
+      border-radius: 5px; 
+      font-size: 0.9em; 
+      margin: 10px 0; 
+    }
+    .info-box span { color: #1e88e5; }
     .apply-button, .cta-button { 
       background: #5baed8; 
       color: white; 
-      padding: 12px 20px; 
-      font-size: 1.1em; 
+      padding: 10px; 
+      font-size: 1em; 
       border: none; 
       cursor: pointer; 
       border-radius: 5px; 
       margin: 10px; 
       display: inline-block; 
       min-width: 200px; 
-      pointer-events: auto; 
-      user-select: none; 
-      touch-action: manipulation; 
       box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
       transition: background 0.3s; 
-      font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
     .apply-button:hover, .cta-button:hover { background: #1e88e5; }
     .section { padding: 20px; max-width: 600px; margin: auto; }
     .reviews { background: #f5faff; }
-    .review { margin: 10px; font-style: italic; font-size: 0.9em; color: #333333; }
+    .review { 
+      margin: 10px; 
+      font-style: italic; 
+      font-size: 0.9em; 
+      border-left: 3px solid #5baed8; 
+      padding-left: 10px; 
+    }
     .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
     .collage-img { 
       width: 45%; 
-      max-height: 150px; 
+      max-height: 120px; 
       object-fit: cover; 
       border-radius: 5px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3); 
       transition: transform 0.3s; 
+      loading: lazy;
     }
     .collage-img:nth-child(1) { transform: rotate(-5deg); }
     .collage-img:nth-child(2) { transform: rotate(5deg); }
     .collage-img:nth-child(3) { transform: rotate(3deg); }
-    .collage-img:nth-child(4) { transform: rotate(-3deg); }
     .collage-img:hover { transform: scale(1.1) rotate(0deg); }
     .overview table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.95em; }
     .overview td { border: 1px solid #dddddd; padding: 8px; }
     .youtube-link { margin: 20px 0; }
     .youtube-link a { color: #66bb6a; text-decoration: none; font-size: 1em; }
     .youtube-link a:hover { color: #1e88e5; }
-    .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+    .floating-cta { position: fixed; bottom: 10px; right: 10px; z-index: 1000; }
     .modal, .privacy-modal, .success-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; }
     .modal-content, .privacy-modal-content, .success-modal-content { 
       background: #ffffff; 
@@ -101,96 +116,122 @@
       padding: 20px; 
       border-radius: 10px; 
       position: relative; 
-      font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
     .close { position: absolute; right: 15px; top: 10px; font-size: 20px; cursor: pointer; color: #333333; }
     .modal input, .modal select, .modal button, .modal label { 
       width: 100%; 
-      padding: 10px; 
+      padding: 8px; 
       margin: 8px 0; 
       border: 1px solid #dddddd; 
-      border-radius: 5px; 
-      font-size: 1em; 
+      border-radius: 3px; 
+      font-size: 0.9em; 
       box-sizing: border-box; 
-      font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
     .modal input[type="checkbox"] { width: auto; margin-right: 10px; }
-    .modal label { display: flex; align-items: center; padding: 0; border: none; }
+    .modal label { display: flex; align-items: center; padding: 0; border: none; font-size: 0.9em; color: #555; }
     .privacy-link { color: #66bb6a; text-decoration: underline; cursor: pointer; margin-left: 5px; }
     .privacy-link:hover { color: #1e88e5; }
-    .privacy-modal-content p, .success-modal-content p { font-size: 0.9em; text-align: left; line-height: 1.4; }
-    .age-notice { color: #d32f2f; font-size: 0.85em; margin: 8px 0; display: none; text-align: left; }
+    .success-modal-content ul { list-style: none; padding: 0; font-size: 0.9em; text-align: left; }
+    .success-modal-content ul li { margin: 5px 0; }
+    .success-modal-content li::before { content: '✅ '; }
+    .success-modal-content .optional { color: #1e88e5; }
+    .age-notice { color: #d32f2f; font-size: 0.85em; margin: 8px 0; text-align: left; }
     .promo-banner { background: #fff3cd; padding: 10px; margin: 10px; border-radius: 5px; }
     .faq details { margin: 10px 0; }
-    .faq summary { 
-      cursor: pointer; 
-      font-weight: bold; 
-      font-size: 1em; 
-      font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
-    }
-    .faq p { 
-      margin: 5px 0 10px 15px; 
-      font-size: 0.95em; 
-      font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
-    }
+    .faq summary { cursor: pointer; font-weight: bold; font-size: 0.95em; }
+    .faq summary::before { content: '✅ '; }
+    .faq p { margin: 5px 0 10px 15px; font-size: 0.9em; line-height: 1.3; }
+    .timer { color: #d32f2f; font-size: 0.85em; font-weight: bold; margin: 10px 0; }
     img { max-width: 100%; height: auto; }
     @media (max-width: 768px) {
       .hero img { max-height: 250px; }
       .hero-text { font-size: 1.3em; }
-      .apply-button, .cta-button { width: 100%; font-size: 1em; }
+      .apply-button, .cta-button { width: 100%; font-size: 0.95em; }
       .modal-content, .privacy-modal-content, .success-modal-content { margin: 30% auto; }
-      .collage-img { width: 45%; max-height: 120px; }
+      .collage-img { width: 45%; max-height: 100px; }
       body { font-size: 0.9em; }
       .review { font-size: 0.85em; }
       .overview table { font-size: 0.9em; }
+      .info-box, .timer { font-size: 0.85em; }
     }
     @media (max-width: 375px) {
       .hero-text { font-size: 1.2em; }
-      .collage-img { width: 48%; max-height: 100px; }
+      .collage-img { width: 48%; max-height: 90px; }
       .age-notice { font-size: 0.8em; }
       .overview table { font-size: 0.85em; }
+      .apply-button, .cta-button { font-size: 0.9em; min-width: 100%; padding: 8px; }
     }
-  </style></head>
-  <body>
+  </style>
+</head>
+<body>
   <!-- Hero Image -->
   <div class="hero">
-  <img src="https://i.imgur.com/B3EwCsM.jpeg" alt="카누 1"></div>
-  </div>
+    <img src="https://i.imgur.com/B3EwCsM.jpeg" alt="카누 1">
+   
   <!-- Apply Section -->
   <div class="apply-section">
-    <img src="https://i.imgur.com/9URE21J.jpeg">    
+    <img src="https://i.imgur.com/9URE21J.jpeg" alt="카누 2">    
     <h2>일일 캠프 신청하기</h2>
-    <p>(원하는 날짜를 클릭해주세요)</p>
+    <div class="info-box">
+      <p>🟢 5/10: 2팀, 5/11: 1팀 남음</p>
+      <p>✅ 준비물: 편한 복장, 여분 옷, <span>장화(선택)</span></p>
+    </div>
+    <div class="timer">⏰ 마감: 2일</div>
     <div id="apply-buttons">
-      <button class="apply-button" data-date-index="0"></button>
-      <button class="apply-button" data-date-index="1"></button>
+      <button class="apply-button" data-date-index="0">5/10 예약! 2팀 남음</button>
+      <button class="apply-button" data-date-index="1">5/11 예약! 1팀 남음</button>
     </div>
   </div>
 
   <!-- Core Message -->
   <div class="section">
-    <img src="https://i.imgur.com/E91Yb3J.png">
+    <img src="https://i.imgur.com/E91Yb3J.png" alt="핵심 메시지">
   </div>
 
   <!-- Reviews -->
   <div class="section reviews">
     <h2>참여자 후기</h2>
-        <div class="review"><p>"아들이 너무 좋아해서 뿌듯합니다!" - 박○○ </p></div>
-        <div class="review"><p>"겁 많은 5,6학년 두 자매가 너무 즐겁게 탔네요. 아이가 또 신청해달라고 하네요♡♡" - 김○○</p></div>
-    <div class="review"><p>"진심으로 수업해주시는 모습에 감동했습니다. 안전과 재미를 위해 수고해주셔 감사드려요" - 김○○</p></div>
-    <div class="review"><p>"아이들이 다음에 또 가고싶다고 하네요. 좋은 경험, 좋은 인연 감사합니다." - 최○○</p></div>
-    <div class="review"><p>"고요한곳에서 잘 놀았어요. 자연에 편하게 몸을 맡기는 경험이었어요." - 한○○</p></div>
+    <div class="review"><p>"아들이 너무 좋아해서 뿌듯합니다!" - 박지영</p></div>
+    <div class="review"><p>"겁 많은 5,6학년 두 자매가 너무 즐겁게 탔네요. 또 신청할게요!" - 김민수</p></div>
+    <div class="review"><p>"진심으로 수업해주시는 모습에 감동했습니다. 안전과 재미를 위해 감사드려요" - 이수진</p></div>
+    <div class="review"><p>"아이들이 다음에 또 가고싶다고 하네요. 좋은 경험 감사합니다." - 최영희</p></div>
+    <div class="review"><p>"고요한 곳에서 자연과 하나된 느낌, 최고였어요." - 한동훈</p></div>/div>
     <div class="collage">
       <img src="https://i.imgur.com/SFGRjUO.jpeg" alt="후기 이미지 1" class="collage-img">
       <img src="https://i.imgur.com/LMd8soC.jpeg" alt="후기 이미지 2" class="collage-img">
       <img src="https://i.imgur.com/9PgwdeI.jpeg" alt="후기 이미지 3" class="collage-img">
-      <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
     </div>
-  </div>  
+  </div>
+
+  <!-- FAQ -->
+  <div class="section faq">
+    <h2>자주 묻는 질문</h2>
+    <details open>
+      <summary>준비물은 무엇인가요?</summary>
+      <p>편한 복장, 여분 옷, 장화(선택).</p>
+    </details>
+    <details>
+      <summary>안전 조치는 어떻게 되나요?</summary>
+      <p>구명조끼, 1:5 강사 비율, LIFEGUARD.</p>
+    </details>
+    <details>
+      <summary>우천 시 프로그램은?</summary>
+      <p>1mm 이하 진행, 폭우 시 취소/환불.</p>
+    </details>
+    <details>
+      <summary>부모 동반 시 역할은?</summary>
+      <p>배 동승 또는 강변 관람.</p>
+    </details>
+    <details>
+      <summary>캠핑장은 어떻게 가나요?</summary>
+      <p>네비: '죽곡 농민 열린 도서관', 무료 주차.</p>
+    </details>
+  </div>
+
   <!-- Program Overview -->
   <div class="section overview">
-    <img src="https://i.imgur.com/KYLkT6p.jpeg">
-    <img src="https://i.imgur.com/6cBMzrf.jpeg">
+    <img src="https://i.imgur.com/KYLkT6p.jpeg" alt="프로그램 1">
+    <img src="https://i.imgur.com/6cBMzrf.jpeg" alt="프로그램 2">
     <h2>프로그램 개요</h2>
     <table>
       <tr><td>참가방법</td><td>신청 후 문자 안내</td></tr>
@@ -201,30 +242,6 @@
       <tr><td>참가 조건</td><td>8~9세는 부모 동반 필수</td></tr>
     </table>
   </div>
-<div class="section faq">
-  <h2>자주 묻는 질문</h2>
-  <details>
-    <summary>우천 시 프로그램은 어떻게 되나요?</summary>
-    <p>시간당 1mm 이하인 경우 자연 속 운무와 새소리가 더욱 아릅답습니다. 폭우시 취소/환불 가능합니다.</p>
-  </details>
-  <details>
-    <summary>부모 동반 시 부모는 무엇을 하나요?</summary>
-    <p>배에 동승하거나 강변에서 관람할 수 있습니다.</p>
-  </details>
-  <details>
-    <summary>곡성 죽곡 카누캠핑장은 어떻게 가나요?</summary>
-    <p>네비게이션에 '죽곡 농민 열린 도서관'을 검색하시면 됩니다. 캠핑장 진입하시어 자유롭게 주차 가능합니다</p>
-  </details>
-  <details>
-    <summary>안전 조치는 어떻게 이뤄지나요?</summary>
-    <p> 구명조끼 전원 지급되며, 응급 키트 구비되어있습니다.</p>
-  </details>
-</div>
-<style>
-  .faq details { margin: 10px 0; }
-  .faq summary { cursor: pointer; font-weight: bold; }
-  .faq p { margin: 5px 0 10px 15px; }
-</style>
 
   <!-- YouTube Link -->
   <div class="section youtube-link">
@@ -235,25 +252,25 @@
   <!-- Team -->
   <div class="section">
     <h2>운영진</h2>
-    <p>5년 경력 강사, 수상안전요원(LIFEGUARD) 자격증 보유</p>
-    <img src="https://i.imgur.com/QHYwKDp.jpeg">
-    <img src="https://i.imgur.com/4lfHYJv.png">
-    <img src="https://i.imgur.com/mUH3CBw.jpeg">
+    <p>5년 경력 강사, LIFEGUARD 자격</p>
+    <img src="https://i.imgur.com/QHYwKDp.jpeg" alt="운영진 1">
+    <img src="https://i.imgur.com/4lfHYJv.png" alt="운영진 2">
+    <img src="https://i.imgur.com/mUH3CBw.jpeg" alt="운영진 3">
   </div>
 
-  <!-- Final CTA (하단 버튼) -->
+  <!-- Final CTA -->
   <div class="section">
     <div id="final-cta-buttons">
-      <button class="cta-button" data-date-index="0"></button>
-      <button class="cta-button" data-date-index="1"></button>
+      <button class="cta-button" data-date-index="0">5/10 예약! 2팀 남음</button>
+      <button class="cta-button" data-date-index="1">5/11 예약! 1팀 남음</button>
     </div>
   </div>
 
-  <!-- Floating CTA (고정 버튼) -->
+  <!-- Floating CTA -->
   <div class="floating-cta">
     <div id="floating-cta-buttons">
-      <button class="cta-button" data-date-index="0"></button>
-      <button class="cta-button" data-date-index="1"></button>
+      <button class="cta-button" data-date-index="0">5/10 마감 임박!</button>
+      <button class="cta-button" data-date-index="1">5/11 마감 임박!</button>
     </div>
   </div>
 
@@ -263,18 +280,17 @@
       <span class="close" onclick="closeModal()">×</span>
       <h2>체험 신청</h2>
       <form id="signupForm">
-        <input type="text" id="name" placeholder="이름" required>
-        <input type="tel" id="phone" placeholder="연락처" required>
-        <select id="childAge" required>
-          <option value="" disabled selected>자녀 나이</option>
-          <option value="8">8세</option>
-          <option value="9-10">9~10세</option>
-          <option value="11-12">11~12세</option>
-          <option value="13+">13세 이상</option>
-        </select>
-        <p id="ageNotice" class="age-notice">* 8~9세 자녀는 부모 동반이 필수입니다.</p>
+        <label>이름 <span title="문자 안내용">ℹ️</span></label>
+        <input type="text" id="name" required>
+        <label>연락처 <span title="문자 안내용">ℹ️</span></label>
+        <input type="tel" id="phone" required>
+        <label>
+          <input type="checkbox" id="childAge" value="8-9">
+          8~9세 자녀 (부모 동반 필수)
+        </label>
+        <label>참여 인원</label>
         <select id="participants" required>
-          <option value="" disabled selected>참여 인원</option>
+          <option value="" disabled selected>선택</option>
           <option value="1">1인 (3만원)</option>
           <option value="2">2인 (6만원)</option>
           <option value="3">3인 (9만원)</option>
@@ -282,10 +298,25 @@
         <input type="hidden" id="date" value="">
         <label>
           <input type="checkbox" id="privacyAgree" required>
-          개인정보 수집, 이용에 동의합니다 (필수, <span class="privacy-link" onclick="openPrivacyModal()">상세보기</span>)
+          개인정보 동의 (<span class="privacy-link" onclick="openPrivacyModal()">보기</span>)
         </label>
         <button type="submit" class="cta-button">신청 완료</button>
       </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="success-modal">
+    <div class="success-modal-content">
+      <span class="close" onclick="closeSuccessModal()">×</span>
+      <h2>신청 완료</h2>
+      <ul>
+        <li>24시간 내 문자 안내</li>
+        <li>준비물: 편한 복장, 여분 옷</li>
+        <li><span class="optional">장화(선택)</span>: 편안한 체험</li>
+        <li>문의: <span>📞</span> 010-9865-7936</li>
+      </ul>
+      <button onclick="closeSuccessModal()" class="cta-button">확인</button>
     </div>
   </div>
 
@@ -294,120 +325,113 @@
     <div class="privacy-modal-content">
       <span class="close" onclick="closePrivacyModal()">×</span>
       <h2>개인정보 수집 및 이용</h2>
-      <p>산소모험스쿨은(는) 고지사항 전달을 위해 아래와 같이 개인정보를 수집, 이용합니다.</p>
-      <p>1) 개인정보 수집 목적: 회원관리, 고객 상담, 고지사항 전달<br>
-         2) 개인정보 수집 항목: 이름, 전화번호, 이메일<br>
-         3) 보유 및 이용기간: 6개월<br>
-         * 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며, 동의를 거부할 경우에는 서비스 제공이 불가합니다.</p>
+      <p>산소모험스쿨은 고지사항 전달을 위해 아래와 같이 개인정보를 수집, 이용합니다.</p>
+      <p>1) 목적: 회원관리, 고객 상담, 고지사항 전달<br>
+         2) 항목: 이름, 전화번호, 이메일<br>
+         3) 기간: 6개월<br>
+         * 동의 거부 시 서비스 제공 불가</p>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // 디버깅용 콘솔 로그
     console.log('Script loaded');
-
-    // EmailJS 초기화
     emailjs.init("pdoL1uaTJvcQun7eE");
     console.log('EmailJS initialized');
 
-    // 날짜 목록 (여기만 수정하면 모든 버튼에 반영됨)
     const dates = ['5/10(토) PM 3~5시', '5/11(일) PM 3~5시'];
 
-    // 버튼 동적 렌더링
+    function startCountdown() {
+      const deadline = new Date('2025-05-10T15:00:00').getTime();
+      const countdown = document.querySelector('.timer');
+      if (!countdown) return;
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = deadline - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        countdown.textContent = `⏰ 마감: ${days}일`;
+        if (distance < 0) countdown.textContent = '⏰ 마감됨';
+      }, 1000);
+    }
+
     function renderButtons() {
-      // Apply Section 버튼
       const applyButtons = document.querySelectorAll('#apply-buttons .apply-button');
       applyButtons.forEach((button, index) => {
         if (dates[index]) {
-          button.textContent = `${dates[index]} 신청하기`;
+          button.textContent = `${dates[index].split(' ')[0]} 예약! ${index === 0 ? '2팀' : '1팀'} 남음`;
           button.onclick = () => openModal(dates[index]);
         }
       });
 
-      // Final CTA 버튼
       const finalCtaButtons = document.querySelectorAll('#final-cta-buttons .cta-button');
       finalCtaButtons.forEach((button, index) => {
         if (dates[index]) {
-          button.textContent = `${dates[index]} 신청하기`;
+          button.textContent = `${dates[index].split(' ')[0]} 예약! ${index === 0 ? '2팀' : '1팀'} 남음`;
           button.onclick = () => openModal(dates[index]);
         }
       });
 
-      // Floating CTA 버튼
       const floatingCtaButtons = document.querySelectorAll('#floating-cta-buttons .cta-button');
       floatingCtaButtons.forEach((button, index) => {
         if (dates[index]) {
-          button.textContent = `${dates[index]} 신청`;
+          button.textContent = `${dates[index].split(' ')[0]} 마감 임박!`;
           button.onclick = () => openModal(dates[index]);
         }
       });
     }
 
-    // 페이지 로드 시 버튼 렌더링
-    document.addEventListener('DOMContentLoaded', renderButtons);
-
-    // 신청 모달 열기/닫기
     function openModal(date) {
-      console.log('openModal called with date:', date);
+      console.log('openModal:', date);
       const modal = document.getElementById('modal');
       const dateInput = document.getElementById('date');
       if (modal && dateInput) {
         modal.style.display = 'block';
         dateInput.value = date;
-        updateAgeNotice(); // 모달 열릴 때 나이 안내 초기화
       } else {
         console.error('Modal or date input not found');
       }
     }
 
     function closeModal() {
-      console.log('closeModal called');
+      console.log('closeModal');
       const modal = document.getElementById('modal');
-      if (modal) {
-        modal.style.display = 'none';
+      if (modal) modal.style.display = 'none';
+      else console.error('Modal not found');
+    }
+
+    function openSuccessModal() {
+      console.log('openSuccessModal');
+      const successModal = document.getElementById('successModal');
+      if (successModal) successModal.style.display = 'block';
+      else console.error('Success modal not found');
+    }
+
+    function closeSuccessModal() {
+      console.log('closeSuccessModal');
+      const successModal = document.getElementById('successModal');
+      if (successModal) {
+        successModal.style.display = 'none';
+        closeModal();
+        document.getElementById('signupForm').reset();
       } else {
-        console.error('Modal not found');
+        console.error('Success modal not found');
       }
     }
 
-    // 개인정보 모달 열기/닫기
     function openPrivacyModal() {
-      console.log('openPrivacyModal called');
+      console.log('openPrivacyModal');
       const privacyModal = document.getElementById('privacyModal');
-      if (privacyModal) {
-        privacyModal.style.display = 'block';
-      } else {
-        console.error('Privacy modal not found');
-      }
+      if (privacyModal) privacyModal.style.display = 'block';
+      else console.error('Privacy modal not found');
     }
 
     function closePrivacyModal() {
-      console.log('closePrivacyModal called');
+      console.log('closePrivacyModal');
       const privacyModal = document.getElementById('privacyModal');
-      if (privacyModal) {
-        privacyModal.style.display = 'none';
-      } else {
-        console.error('Privacy modal not found');
-      }
+      if (privacyModal) privacyModal.style.display = 'none';
+      else console.error('Privacy modal not found');
     }
 
-    // 나이 선택 시 부모 동반 안내 표시
-    function updateAgeNotice() {
-      const childAge = document.getElementById('childAge').value;
-      const ageNotice = document.getElementById('ageNotice');
-      if (ageNotice) {
-        if (childAge === '8' || childAge === '9-10') {
-          ageNotice.style.display = 'block';
-        } else {
-          ageNotice.style.display = 'none';
-        }
-      } else {
-        console.error('ageNotice not found');
-      }
-    }
-
-    // 폼 제출
     const form = document.getElementById('signupForm');
     if (form) {
       form.addEventListener('submit', function(e) {
@@ -415,19 +439,17 @@
         console.log('Form submitted');
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
-        const childAge = document.getElementById('childAge').value;
+        const childAge = document.getElementById('childAge').checked ? '8-9' : '10+';
         const participants = document.getElementById('participants').value;
         const date = document.getElementById('date').value;
         const privacyAgree = document.getElementById('privacyAgree').checked;
         console.log('Form data:', { name, phone, childAge, participants, date, privacyAgree });
 
         if (!privacyAgree) {
-          alert('개인정보 수집 및 이용에 동의해야 신청할 수 있습니다.');
+          alert('개인정보 동의 필수');
           return;
         }
 
-        // EmailJS로 이메일 전송
-        // 실제 Service ID와 Template ID로 교체하세요: EmailJS 대시보드 > Email Services / Email Templates
         emailjs.send('service_abc123', 'template_xyz789', {
           name: name,
           phone: phone,
@@ -436,27 +458,23 @@
           date: date,
           privacy_agree: privacyAgree
         }).then(() => {
-          console.log('Email sent successfully');
-          alert('신청이 완료되었습니다! 24시간 내 문자로 안내드립니다.');
-          closeModal();
-          this.reset();
+          console.log('Email sent');
+          openSuccessModal();
         }).catch((error) => {
-          console.error('Email send failed:', error);
-          alert('신청 실패, 다시 시도해주세요.');
+          console.error('Email failed:', error);
+          alert('신청 실패, 다시 시도');
         });
       });
-
-      // 나이 선택 변경 시 안내 업데이트
-      const childAgeSelect = document.getElementById('childAge');
-      if (childAgeSelect) {
-        childAgeSelect.addEventListener('change', updateAgeNotice);
-      } else {
-        console.error('childAge select not found');
-      }
     } else {
       console.error('signupForm not found');
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderButtons();
+      startCountdown();
+    });
   </script>
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93960c980badbf8c',t:'MTc0NjE3MzUwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b66ebfcfe4bd1b',t:'MTc0NjUxMzA2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){ вч var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
