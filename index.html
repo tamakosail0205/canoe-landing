@@ -8,7 +8,7 @@
     @font-face {
       font-family: 'SokchoBadaBatang';
       src: url('./fonts/SokchoBadaBatang.woff2') format('woff2'),
-           url('./fonts/SokchoBadaBatang.woff') format('woff');
+     url('./fonts/SokchoBadaBatang.woff') format('woff');
       font-weight: normal;
       font-style: normal;
     }
@@ -22,6 +22,7 @@
       line-height: 1.5; 
       color: #333333; 
     }
+    /* 모든 요소에 폰트 강제 적용 */
     button, input, select, textarea, table, th, td, details, summary {
       font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
@@ -118,8 +119,6 @@
     .privacy-link { color: #66bb6a; text-decoration: underline; cursor: pointer; margin-left: 5px; }
     .privacy-link:hover { color: #1e88e5; }
     .privacy-modal-content p, .success-modal-content p { font-size: 0.9em; text-align: left; line-height: 1.4; }
-    .success-modal-content strong { font-weight: bold; }
-    .success-modal-content .optional { color: #1e88e5; }
     .age-notice { color: #d32f2f; font-size: 0.85em; margin: 8px 0; display: none; text-align: left; }
     .promo-banner { background: #fff3cd; padding: 10px; margin: 10px; border-radius: 5px; }
     .faq details { margin: 10px 0; }
@@ -129,7 +128,6 @@
       font-size: 1em; 
       font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
-    .faq summary::before { content: '✅ '; }
     .faq p { 
       margin: 5px 0 10px 15px; 
       font-size: 0.95em; 
@@ -152,14 +150,12 @@
       .age-notice { font-size: 0.8em; }
       .overview table { font-size: 0.85em; }
     }
-  </style>
-</head>
-<body>
+  </style></head>
+  <body>
   <!-- Hero Image -->
   <div class="hero">
-    <img src="https://i.imgur.com/B3EwCsM.jpeg" alt="카누 1">
+  <img src="https://i.imgur.com/B3EwCsM.jpeg" alt="카누 1"></div>
   </div>
-
   <!-- Apply Section -->
   <div class="apply-section">
     <img src="https://i.imgur.com/9URE21J.jpeg">    
@@ -179,8 +175,8 @@
   <!-- Reviews -->
   <div class="section reviews">
     <h2>참여자 후기</h2>
-    <div class="review"><p>"아들이 너무 좋아해서 뿌듯합니다!" - 박○○</p></div>
-    <div class="review"><p>"겁 많은 5,6학년 두 자매가 너무 즐겁게 탔네요. 아이가 또 신청해달라고 하네요♡♡" - 김○○</p></div>
+        <div class="review"><p>"아들이 너무 좋아해서 뿌듯합니다!" - 박○○ </p></div>
+        <div class="review"><p>"겁 많은 5,6학년 두 자매가 너무 즐겁게 탔네요. 아이가 또 신청해달라고 하네요♡♡" - 김○○</p></div>
     <div class="review"><p>"진심으로 수업해주시는 모습에 감동했습니다. 안전과 재미를 위해 수고해주셔 감사드려요" - 김○○</p></div>
     <div class="review"><p>"아이들이 다음에 또 가고싶다고 하네요. 좋은 경험, 좋은 인연 감사합니다." - 최○○</p></div>
     <div class="review"><p>"고요한곳에서 잘 놀았어요. 자연에 편하게 몸을 맡기는 경험이었어요." - 한○○</p></div>
@@ -190,9 +186,7 @@
       <img src="https://i.imgur.com/9PgwdeI.jpeg" alt="후기 이미지 3" class="collage-img">
       <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
     </div>
-  </div>
-
-
+  </div>  
   <!-- Program Overview -->
   <div class="section overview">
     <img src="https://i.imgur.com/KYLkT6p.jpeg">
@@ -207,33 +201,31 @@
       <tr><td>참가 조건</td><td>8~9세는 부모 동반 필수</td></tr>
     </table>
   </div>
+<div class="section faq">
+  <h2>자주 묻는 질문</h2>
+  <details>
+    <summary>우천 시 프로그램은 어떻게 되나요?</summary>
+    <p>시간당 1mm 이하인 경우 자연 속 운무와 새소리가 더욱 아릅답습니다. 폭우시 취소/환불 가능합니다.</p>
+  </details>
+  <details>
+    <summary>부모 동반 시 부모는 무엇을 하나요?</summary>
+    <p>배에 동승하거나 강변에서 관람할 수 있습니다.</p>
+  </details>
+  <details>
+    <summary>곡성 죽곡 카누캠핑장은 어떻게 가나요?</summary>
+    <p>네비게이션에 '죽곡 농민 열린 도서관'을 검색하시면 됩니다. 캠핑장 진입하시어 자유롭게 주차 가능합니다</p>
+  </details>
+  <details>
+    <summary>안전 조치는 어떻게 이뤄지나요?</summary>
+    <p> 구명조끼 전원 지급되며, 응급 키트 구비되어있습니다.</p>
+  </details>
+</div>
+<style>
+  .faq details { margin: 10px 0; }
+  .faq summary { cursor: pointer; font-weight: bold; }
+  .faq p { margin: 5px 0 10px 15px; }
+</style>
 
-  <!-- FAQ -->
-  <div class="section faq">
-    <h2>자주 묻는 질문</h2>
-    <details>
-      <summary>카누 체험 준비물은 무엇인가요?</summary>
-      <p>필수: 편한 복장, 여분 옷. 추천: 무릎 이상 장화(없어도 참여 가능합니다).</p>
-    </details>
-    <details>
-      <summary>우천 시 프로그램은 어떻게 되나요?</summary>
-      <p>시간당 1mm 이하인 경우 자연 속 운무와 새소리가 더욱 아름답습니다. 폭우시 취소/환불 가능합니다.</p>
-    </details>
-    <details>
-      <summary>부모 동반 시 부모는 무엇을 하나요?</summary>
-      <p>배에 동승하거나 강변에서 관람할 수 있습니다.</p>
-    </details>
-    <details>
-      <summary>곡성 죽곡 카누캠핑장은 어떻게 가나요?</summary>
-      <p>네비게이션에 '죽곡 농민 열린 도서관'을 검색하시면 됩니다. 캠핑장 진입하시어 자유롭게 주차 가능합니다</p>
-    </details>
-    <details>
-      <summary>안전 조치는 어떻게 이뤄지나요?</summary>
-      <p>구명조끼 전원 지급되며, 응급 키트 구비되어있습니다.</p>
-    </details>
-  </div>
-
-  
   <!-- YouTube Link -->
   <div class="section youtube-link">
     <h2>체험 미리보기</h2>
@@ -249,7 +241,7 @@
     <img src="https://i.imgur.com/mUH3CBw.jpeg">
   </div>
 
-  <!-- Final CTA -->
+  <!-- Final CTA (하단 버튼) -->
   <div class="section">
     <div id="final-cta-buttons">
       <button class="cta-button" data-date-index="0"></button>
@@ -257,7 +249,7 @@
     </div>
   </div>
 
-  <!-- Floating CTA -->
+  <!-- Floating CTA (고정 버튼) -->
   <div class="floating-cta">
     <div id="floating-cta-buttons">
       <button class="cta-button" data-date-index="0"></button>
@@ -297,19 +289,6 @@
     </div>
   </div>
 
-  <!-- Success Modal -->
-  <div id="successModal" class="success-modal">
-    <div class="success-modal-content">
-      <span class="close" onclick="closeSuccessModal()">×</span>
-      <h2>신청 완료</h2>
-      <p>24시간 내 문자로 안내드립니다.<br>
-         <strong>준비물</strong>: 편한 복장, 여분 옷.<br>
-         <span class="optional">추천(선택)</span>: 무릎 이상 장화(더 편안한 체험을 위해, 없어도 참여 가능).
-      </p>
-      <button onclick="closeSuccessModal()" class="cta-button">확인</button>
-    </div>
-  </div>
-
   <!-- Privacy Policy Modal -->
   <div id="privacyModal" class="privacy-modal">
     <div class="privacy-modal-content">
@@ -332,11 +311,12 @@
     emailjs.init("pdoL1uaTJvcQun7eE");
     console.log('EmailJS initialized');
 
-    // 날짜 목록
+    // 날짜 목록 (여기만 수정하면 모든 버튼에 반영됨)
     const dates = ['5/10(토) PM 3~5시', '5/11(일) PM 3~5시'];
 
     // 버튼 동적 렌더링
     function renderButtons() {
+      // Apply Section 버튼
       const applyButtons = document.querySelectorAll('#apply-buttons .apply-button');
       applyButtons.forEach((button, index) => {
         if (dates[index]) {
@@ -345,6 +325,7 @@
         }
       });
 
+      // Final CTA 버튼
       const finalCtaButtons = document.querySelectorAll('#final-cta-buttons .cta-button');
       finalCtaButtons.forEach((button, index) => {
         if (dates[index]) {
@@ -353,6 +334,7 @@
         }
       });
 
+      // Floating CTA 버튼
       const floatingCtaButtons = document.querySelectorAll('#floating-cta-buttons .cta-button');
       floatingCtaButtons.forEach((button, index) => {
         if (dates[index]) {
@@ -362,6 +344,9 @@
       });
     }
 
+    // 페이지 로드 시 버튼 렌더링
+    document.addEventListener('DOMContentLoaded', renderButtons);
+
     // 신청 모달 열기/닫기
     function openModal(date) {
       console.log('openModal called with date:', date);
@@ -370,7 +355,7 @@
       if (modal && dateInput) {
         modal.style.display = 'block';
         dateInput.value = date;
-        updateAgeNotice();
+        updateAgeNotice(); // 모달 열릴 때 나이 안내 초기화
       } else {
         console.error('Modal or date input not found');
       }
@@ -383,29 +368,6 @@
         modal.style.display = 'none';
       } else {
         console.error('Modal not found');
-      }
-    }
-
-    // 성공 모달 열기/닫기
-    function openSuccessModal() {
-      console.log('openSuccessModal called');
-      const successModal = document.getElementById('successModal');
-      if (successModal) {
-        successModal.style.display = 'block';
-      } else {
-        console.error('Success modal not found');
-      }
-    }
-
-    function closeSuccessModal() {
-      console.log('closeSuccessModal called');
-      const successModal = document.getElementById('successModal');
-      if (successModal) {
-        successModal.style.display = 'none';
-        closeModal();
-        document.getElementById('signupForm').reset();
-      } else {
-        console.error('Success modal not found');
       }
     }
 
@@ -430,7 +392,7 @@
       }
     }
 
-    // 나이 선택 시 부모 동반 안내
+    // 나이 선택 시 부모 동반 안내 표시
     function updateAgeNotice() {
       const childAge = document.getElementById('childAge').value;
       const ageNotice = document.getElementById('ageNotice');
@@ -464,6 +426,8 @@
           return;
         }
 
+        // EmailJS로 이메일 전송
+        // 실제 Service ID와 Template ID로 교체하세요: EmailJS 대시보드 > Email Services / Email Templates
         emailjs.send('service_abc123', 'template_xyz789', {
           name: name,
           phone: phone,
@@ -473,13 +437,16 @@
           privacy_agree: privacyAgree
         }).then(() => {
           console.log('Email sent successfully');
-          openSuccessModal();
+          alert('신청이 완료되었습니다! 24시간 내 문자로 안내드립니다.');
+          closeModal();
+          this.reset();
         }).catch((error) => {
           console.error('Email send failed:', error);
           alert('신청 실패, 다시 시도해주세요.');
         });
       });
 
+      // 나이 선택 변경 시 안내 업데이트
       const childAgeSelect = document.getElementById('childAge');
       if (childAgeSelect) {
         childAgeSelect.addEventListener('change', updateAgeNotice);
@@ -489,11 +456,7 @@
     } else {
       console.error('signupForm not found');
     }
-
-    // 페이지 로드 시 실행
-    document.addEventListener('DOMContentLoaded', renderButtons);
   </script>
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93960c980badbf8c',t:'MTc0NjE3MzUwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b66ebfcfe4bd1b',t:'MTc0NjUxMzA2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
