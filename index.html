@@ -25,23 +25,6 @@
     button, input, select, textarea, table, th, td, details, summary {
       font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
-    .img { max-width: 100%; height: auto; border: none !important; }
-    }
-   .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
-    .collage-img { 
-      width: 45%; 
-      max-height: 150px; 
-      object-fit: cover; 
-      border-radius: 5px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
-      transition: transform 0.3s; 
-    }
-    .collage-img:nth-child(1) { transform: rotate(-5deg); }
-    .collage-img:nth-child(2) { transform: rotate(5deg); }
-    .collage-img:nth-child(3) { transform: rotate(3deg); }
-    .collage-img:nth-child(4) { transform: rotate(-3deg); }
-    .collage-img:hover { transform: scale(1.1) rotate(0deg); } 
-
     .hero { padding: 20px; position: relative; }
     .hero img { 
       width: 100%; 
@@ -103,6 +86,21 @@
       font-size: 0.9em; 
       border-left: 3px solid #5baed8; 
       padding-left: 10px; 
+    }
+    .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
+    .collage-img { 
+      width: 45%; 
+      max-height: 120px; 
+      object-fit: contain; 
+      border-radius: 5px; 
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3); 
+      transition: transform 0.3s; 
+      loading: lazy;
+    }
+    .collage-img:nth-child(1) { transform: rotate(-5deg); }
+    .collage-img:nth-child(2) { transform: rotate(5deg); }
+    .collage-img:nth-child(3) { transform: rotate(3deg); }
+    .collage-img:hover { transform: scale(1.1) rotate(0deg); }
     .overview table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.95em; }
     .overview td { border: 1px solid #dddddd; padding: 8px; }
     .youtube-link { margin: 20px 0; }
@@ -150,7 +148,7 @@
       .hero-text { font-size: 1.3em; }
       .apply-button, .cta-button { width: 100%; font-size: 0.95em; }
       .modal-content, .privacy-modal-content, .success-modal-content { margin: 30% auto; }
-      .collage-img { width: 45%; max-height: 120px; }
+      .collage-img { width: 45%; max-height: 100px; }
       body { font-size: 0.9em; }
       .review { font-size: 0.85em; }
       .overview table { font-size: 0.9em; }
@@ -158,11 +156,11 @@
     }
     @media (max-width: 375px) {
       .hero-text { font-size: 1.2em; }
-      .collage-img { width: 48%; max-height: 100px; }
+      .collage-img { width: 48%; max-height: 90px; }
       .age-notice { font-size: 0.8em; }
       .overview table { font-size: 0.85em; }
       .apply-button, .cta-button { font-size: 0.9em; min-width: 100%; padding: 8px; }
-    } 
+    }
   </style>
 </head>
 <body>
@@ -172,7 +170,7 @@
    
   <!-- Apply Section -->
   <div class="apply-section">
-    <img src="https://i.imgur.com/9URE21J.jpeg" alt="카누 2">
+    <img src="https://i.imgur.com/9URE21J.jpeg" alt="카누 2">    
     <h2>일일 캠프 신청하기</h2>
     <div class="info-box">
       <p>🟢 5/10: 2팀, 5/11: 1팀 남음</p>
@@ -202,7 +200,6 @@
       <img src="https://i.imgur.com/SFGRjUO.jpeg" alt="후기 이미지 1" class="collage-img">
       <img src="https://i.imgur.com/LMd8soC.jpeg" alt="후기 이미지 2" class="collage-img">
       <img src="https://i.imgur.com/9PgwdeI.jpeg" alt="후기 이미지 3" class="collage-img">
-      <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
     </div>
   </div>
 
