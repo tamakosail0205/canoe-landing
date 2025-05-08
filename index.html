@@ -88,7 +88,8 @@
       padding-left: 10px; 
     .frame {
        width: 100%; 
-      height: auto; 
+      height: auto;
+      aspect-ratio 16/9
       max-height: 300px; 
       object-fit: contain; 
     overflow: hidden; /* 이미지가 액자를 넘지 않도록 설정 */
@@ -106,7 +107,7 @@ img {
     .collage-img { 
       width: 45%; 
       max-height: 120px; 
-      object-fit: contain; 
+      object-fit: cover; 
       border-radius: 5px; 
       box-shadow: 0 3px 6px rgba(0,0,0,0.3); 
       transition: transform 0.3s; 
