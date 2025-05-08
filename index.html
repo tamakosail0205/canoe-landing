@@ -25,6 +25,23 @@
     button, input, select, textarea, table, th, td, details, summary {
       font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
     }
+    .img { max-width: 100%; height: auto; border: none !important; }
+    }
+   .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
+    .collage-img { 
+      width: 45%; 
+      max-height: 150px; 
+      object-fit: cover; 
+      border-radius: 5px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+      transition: transform 0.3s; 
+    }
+    .collage-img:nth-child(1) { transform: rotate(-5deg); }
+    .collage-img:nth-child(2) { transform: rotate(5deg); }
+    .collage-img:nth-child(3) { transform: rotate(3deg); }
+    .collage-img:nth-child(4) { transform: rotate(-3deg); }
+    .collage-img:hover { transform: scale(1.1) rotate(0deg); } 
+
     .hero { padding: 20px; position: relative; }
     .hero img { 
       width: 100%; 
@@ -86,22 +103,6 @@
       font-size: 0.9em; 
       border-left: 3px solid #5baed8; 
       padding-left: 10px; 
-img { max-width: 100%; height: auto; border: none !important; }
-    }
-   .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
-    .collage-img { 
-      width: 45%; 
-      max-height: 150px; 
-      object-fit: cover; 
-      border-radius: 5px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
-      transition: transform 0.3s; 
-    }
-    .collage-img:nth-child(1) { transform: rotate(-5deg); }
-    .collage-img:nth-child(2) { transform: rotate(5deg); }
-    .collage-img:nth-child(3) { transform: rotate(3deg); }
-    .collage-img:nth-child(4) { transform: rotate(-3deg); }
-    .collage-img:hover { transform: scale(1.1) rotate(0deg); } 
     .overview table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.95em; }
     .overview td { border: 1px solid #dddddd; padding: 8px; }
     .youtube-link { margin: 20px 0; }
