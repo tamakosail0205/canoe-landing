@@ -62,16 +62,16 @@
     .collage { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 600px; margin: 0 auto; }
     .collage-img { 
       width: 45%; 
-      max-height: 120px; 
-      object-fit: contain; 
+      max-height: 150px; 
+      object-fit: cover; 
       border-radius: 5px; 
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3); 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
       transition: transform 0.3s; 
-      loading: lazy;
     }
     .collage-img:nth-child(1) { transform: rotate(-5deg); }
     .collage-img:nth-child(2) { transform: rotate(5deg); }
     .collage-img:nth-child(3) { transform: rotate(3deg); }
+    .collage-img:nth-child(4) { transform: rotate(-3deg); }
     .collage-img:hover { transform: scale(1.1) rotate(0deg); }
     .overview table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.95em; }
     .overview td { border: 1px solid #dddddd; padding: 8px; }
@@ -168,6 +168,7 @@
       <img src="https://i.imgur.com/SFGRjUO.jpeg" alt="후기 이미지 1" class="collage-img">
       <img src="https://i.imgur.com/LMd8soC.jpeg" alt="후기 이미지 2" class="collage-img">
       <img src="https://i.imgur.com/9PgwdeI.jpeg" alt="후기 이미지 3" class="collage-img">
+      <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
     </div>
   </div>
 
