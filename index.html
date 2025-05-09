@@ -48,16 +48,23 @@
       max-width: 600px;
       margin: 0 auto 20px;
     }
+    .hero-cta {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     .cta-button {
       background: #d32f2f;
       color: white;
-      padding: 12px 24px;
-      font-size: 1.1em;
+      padding: 10px 20px;
+      font-size: 1em;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       transition: background 0.3s;
+      min-width: 200px;
     }
     .cta-button:hover {
       background: #b71c1c;
@@ -125,7 +132,7 @@
       display: block;
       loading: lazy;
     }
-     .collage {
+    .collage {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -146,11 +153,20 @@
     .collage-img:nth-child(3) { transform: rotate(3deg); }
     .collage-img:nth-child(4) { transform: rotate(-3deg); }
     .collage-img:hover { transform: scale(1.1) rotate(0deg); }
-    .overview table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.95em;
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .team-img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      loading: lazy;
     }
     .overview table {
       width: 100%;
@@ -191,6 +207,9 @@
       bottom: 20px;
       right: 20px;
       z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .modal, .success-modal {
       display: none;
@@ -281,9 +300,14 @@
         font-size: 0.9em;
         padding: 0 20px;
       }
+      .hero-cta {
+        flex-direction: column;
+        gap: 8px;
+      }
       .cta-button {
-        font-size: 1em;
-        padding: 10px 20px;
+        font-size: 0.95em;
+        padding: 8px 16px;
+        min-width: 100%;
       }
       .experience-item img {
         max-width: 90%;
@@ -293,6 +317,17 @@
       }
       .review {
         font-size: 0.85em;
+      }
+      .collage-img {
+        max-height: 90px;
+      }
+      .team-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .team-img {
+        max-width: 90%;
+        max-height: 150px;
       }
       .overview table {
         font-size: 0.9em;
@@ -312,14 +347,27 @@
         font-size: 0.85em;
       }
       .cta-button {
-        font-size: 0.95em;
-        padding: 8px 16px;
+        font-size: 0.9em;
+        padding: 8px 12px;
       }
       .experience-item img {
         max-width: 100%;
       }
       .experience-item h3 {
         font-size: 1.2em;
+      }
+      .collage-img {
+        max-height: 80px;
+      }
+      .team-img {
+        max-width: 100%;
+        max-height: 120px;
+      }
+      .section h2 {
+        font-size: 1.3em;
+      }
+      .section p {
+        font-size: 0.85em;
       }
       .overview table {
         font-size: 0.85em;
@@ -331,10 +379,12 @@
   <!-- Hero Section -->
   <div class="hero">
     <div class="hero-content fade-in">
-      <h1>내가 만든 배로, 나만의 항해를 시작하다</h1>
+      <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
       <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
-      <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">지금 예약! 5/11</button>
-      <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">지금 예약! 5/10</button>
+      <div class="hero-cta">
+        <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10(토) PM 3~5시</button>
+        <button class="cta-button" onclick="openModal('5/11(일) PM 3~5시')">5/11(일) PM 3~5시</button>
+      </div>
     </div>
   </div>
 
@@ -377,6 +427,7 @@
       <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
     </div>
     <img src="https://i.imgur.com/n2CA4Kz.png" alt="공감카드" class="review-img">
+    <p>내면 성장을 돕는 공감 카드를 활용합니다.</p>
   </div>
 
   <!-- Program Overview -->
@@ -387,9 +438,9 @@
       <tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
       <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
-      <tr><td>참가 조건</td><td>8~9세 부모 동반, 10~13세 독립 가능</td></tr>
+      <tr><td>참가 조건</td><td>8~9세 (부모 동반), 10~13세 (독립 가능)</td></tr>
     </table>
-    <p class="camp-info">📌 2시간 체험을 넘어, 2박3일/3박4일 캠프에서 더 깊은 모험과 성장을!</p>
+    <p class="camp-info">📌 일일 캠프를 넘어, 계절 캠프에서 더 깊은 모험과 성장이 가능합니다!</p>
   </div>
 
   <!-- FAQ Section -->
@@ -401,11 +452,11 @@
     </details>
     <details open>
       <summary>안전 조치는?</summary>
-      <p>구명조끼, LIFEGUARD, 1:5 비율, 사고 0건.</p>
+      <p>구명조끼 전원 지급, LIFEGUARD 대기, 1:5 강사 비율, 사고 0건.</p>
     </details>
     <details open>
       <summary>우천 시 진행되나요?</summary>
-      <p>1mm 이하 진행, 폭우 시 무료 취소/실내 대체.</p>
+      <p>1mm 이하 진행, 폭우 시 무료 취소/환불.</p>
     </details>
     <details open>
       <summary>준비물은?</summary>
@@ -413,15 +464,17 @@
     </details>
   </div>
 
-  <!-- Team -->
+  <!-- Team Section -->
   <div class="section">
     <h2>운영진</h2>
     <p>5년 경력 강사, LIFEGUARD 자격</p>
-    <img src="https://i.imgur.com/QHYwKDp.jpeg" alt="운영진 1">
-    <img src="https://i.imgur.com/4lfHYJv.png" alt="운영진 2">
-    <img src="https://i.imgur.com/mUH3CBw.jpeg" alt="운영진 3">
+    <div class="team-container">
+      <img src="https://i.imgur.com/b4OBUkB.jpeg" alt="운영진 1" class="team-img">
+      <img src="https://i.imgur.com/4lfHYJv.png" alt="운영진 2" class="team-img">
+      <img src="https://i.imgur.com/mUH3CBw.jpeg" alt="운영진 3" class="team-img">
+    </div>
   </div>
-  
+
   <!-- Floating CTA -->
   <div class="floating-cta">
     <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10 마감 임박!</button>
