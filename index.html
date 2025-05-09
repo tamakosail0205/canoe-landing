@@ -30,13 +30,14 @@
       position: relative;
       height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
     }
     .hero-content {
       color: white;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-top: 20px;
     }
     .hero-content h1 {
       font-size: 2.2em;
@@ -48,24 +49,16 @@
       max-width: 600px;
       margin: 0 auto 20px;
     }
-    .hero-cta {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 200px; 
-  position: relative;
-  transform: translateY(30px); 
-}
-.footer-cta {
+    .hero-cta, .footer-cta {
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 20px;
+      margin-bottom: 20px;
     }
     .cta-button {
-      background: #d32f2f;
+      background: rgba(211, 47, 47, 0.9);
       color: white;
       padding: 10px 20px;
       font-size: 1em;
@@ -73,11 +66,12 @@
       border-radius: 5px;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
       transition: background 0.3s;
       min-width: 200px;
     }
     .cta-button:hover {
-      background: #b71c1c;
+      background: rgba(183, 28, 28, 0.9);
     }
     .section {
       padding: 40px 20px;
@@ -119,12 +113,54 @@
       color: #555;
       max-width: 600px;
     }
+    .video-preview {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .video-thumbnail {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      margin: 15px auto;
+      transition: transform 0.3s;
+    }
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .video-thumbnail:hover {
+      transform: scale(1.05);
+    }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-left: 30px solid #d32f2f;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .video-thumbnail:hover .play-button {
+      opacity: 1;
+    }
     .reviews {
       background: #f5faff;
       border-radius: 10px;
     }
     .review {
-      margin: 20px;
+      margin: 15px 20px;
       font-style: italic;
       font-size: 0.9em;
       border-left: 3px solid #5baed8;
@@ -141,20 +177,21 @@
       border-radius: 10px;
       margin: 10px auto;
       display: block;
-      loading: lazy;
+      loading: shaded;
     }
     .collage {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      max-width: 600px;
+      max-width: 500px;
       margin: 10px auto;
+      aspect-ratio: 1/1;
     }
     .collage-img {
-      width: 48%;
-      max-height: 100px;
-      object-fit: contain;
+      width: 100%;
+      max-height: 120px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
       border-radius: 5px;
       transform: rotate(-5deg);
       transition: transform 0.3s;
@@ -310,6 +347,9 @@
       .hero {
         height: 80vh;
       }
+      .hero-content {
+        margin-top: 15px;
+      }
       .hero-content h1 {
         font-size: 1.8em;
       }
@@ -320,6 +360,8 @@
       .hero-cta, .footer-cta {
         flex-direction: column;
         gap: 8px;
+        margin-bottom: 15px;
+        max-width: 90%;
       }
       .cta-button {
         font-size: 0.95em;
@@ -337,11 +379,22 @@
       .experience-item h3 {
         font-size: 1.3em;
       }
+      .video-thumbnail {
+        max-width: 80%;
+      }
+      .play-button {
+        border-left: 25px solid #d32f2f;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+      }
       .review {
         font-size: 0.85em;
       }
+      .collage {
+        max-width: 80%;
+      }
       .collage-img {
-        max-height: 90px;
+        max-height: 100px;
       }
       .team-img {
         max-width: 90%;
@@ -357,11 +410,18 @@
       }
     }
     @media (max-width: 375px) {
+      .hero-content {
+        margin-top: 10px;
+      }
       .hero-content h1 {
         font-size: 1.5em;
       }
       .hero-content p {
         font-size: 0.85em;
+      }
+      .hero-cta, .footer-cta {
+        margin-bottom: 10px;
+        max-width: 100%;
       }
       .cta-button {
         font-size: 0.9em;
@@ -376,6 +436,17 @@
       }
       .experience-item h3 {
         font-size: 1.2em;
+      }
+      .video-thumbnail {
+        max-width: 90%;
+      }
+      .play-button {
+        border-left: 20px solid #d32f2f;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+      }
+      .collage {
+        max-width: 90%;
       }
       .collage-img {
         max-height: 80px;
@@ -400,11 +471,11 @@
   <div class="hero">
     <div class="hero-content fade-in">
       <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
-      <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, <br>스스로 만든 모험과 성장의 이야기입니다.</p>
-      <div class="hero-cta">
-        <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10(토) PM 3~5시</button>
-        <button class="cta-button" onclick="openModal('5/11(일) PM 3~5시')">5/11(일) PM 3~5시</button>
-      </div>
+      <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
+    </div>
+    <div class="hero-cta">
+      <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10(토) PM 3~5시</button>
+      <button class="cta-button" onclick="openModal('5/11(일) PM 3~5시')">5/11(일) PM 3~5시</button>
     </div>
   </div>
 
@@ -414,18 +485,31 @@
     <div class="experience-item fade-in">
       <img src="https://i.imgur.com/jOznC1t.jpeg" alt="배 만들기">
       <h3>배 만들기</h3>
-      <p>6만 년 전부터 이어진 배의 역사를 배우며,<br> 아이는 공기 펌프로 안전한 고무 배를 만듭니다.</p>
+      <p>6만 년 전부터 이어진 배의 역사를 배우며, 아이는 공기 펌프로 안전한 고무 배를 만듭니다.</p>
     </div>
     <div class="experience-item fade-in">
       <img src="https://i.imgur.com/ibCaNiu.jpeg" alt="항해 체험">
       <h3>항해 체험</h3>
-      <p>완성된 배를 타고, 아이는 혼자서 또는 부모와 함께 물 위를 항해합니다. 스스로의 힘으로 나아가는 독립의 여정입니다.</p>
+      <p>완성된 배를 타고, 아이는 혼자서 또는 친구와 함께 물 위를 항해합니다. 스스로의 힘으로 나아가는 독립의 여정입니다.</p>
     </div>
     <div class="experience-item fade-in">
       <img src="https://i.imgur.com/LaYwe6q.jpeg" alt="감정 나누기">
       <h3>감정 나누기</h3>
-      <p>체험 후, 공감카드를 통해 자신의 감정을 표현합니다. <br>비폭력대화로 아이의 내면 성장을 도와줍니다.</p>
+      <p>체험 후, 공감카드를 통해 자신의 감정을 표현합니다. 비폭력대화로 아이의 내면 성장을 도와줍니다.</p>
     </div>
+  </div>
+
+  <!-- Video Preview Section -->
+  <div class="section video-preview">
+    <h2>체험 미리보기</h2>
+    <a href="https://youtu.be/yXmGzKg2sqY" target="_blank" rel="noopener" class="video-thumbnail fade-in">
+      <picture>
+        <source srcset="https://img.youtube.com/vi/yXmGzKg2sqY/maxresdefault.jpg" type="image/jpeg">
+        <img src="https://img.youtube.com/vi/yXmGzKg2sqY/hqdefault.jpg" alt="체험 미리보기 영상">
+      </picture>
+      <div class="play-button"></div>
+    </a>
+    <p>영상으로 체험 미리보기!</p>
   </div>
 
   <!-- Reviews Section -->
@@ -435,7 +519,7 @@
       <p>"자유와 조화를 느꼈어요. 처음 보는 친구들과 어울려 놀면서 새로운 경험을 했어요." – 민서 (12세)</p>
     </div>
     <div class="review fade-in">
-      <p>"아이가 배 만들며 자신감이 커졌어요. 소감 나누기 시간에 느낌을 표현하는 모습을 보니 놀라웠어요." – 박지영 (부모)</p>
+      <p>"아이가 배 만들며 자신감이 커졌어요. 소감 나누기 시간에 감정을 표현하는 모습을 보니 뿌듯했어요." – 박지영 (부모)</p>
     </div>
     <div class="review fade-in">
       <p>"도전과 보람을 배웠어요. 무서웠지만 배를 직접 타고 성공했어요!" – 준호 (11세)</p>
