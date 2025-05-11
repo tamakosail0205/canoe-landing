@@ -49,6 +49,21 @@
       max-width: 600px;
       margin: 0 auto 20px;
     }
+    .urgency {
+      color: #d32f2f;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      max-width: 600px;
+      margin: 10px auto;
+    }
+    .timer {
+      color: #d32f2f;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 10px auto;
+      max-width: 600px;
+    }
     .hero-cta, .footer-cta {
       display: flex;
       gap: 10px;
@@ -68,7 +83,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
       transition: background 0.3s;
-      min-width: 200px;
+      min-width: 250px;
     }
     .cta-button:hover {
       background: rgba(183, 28, 28, 0.9);
@@ -159,6 +174,14 @@
       background: #f5faff;
       border-radius: 10px;
     }
+    .social-proof {
+      color: #1e88e5;
+      font-size: 1em;
+      margin: 10px 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .review {
       margin: 15px 20px;
       font-style: italic;
@@ -177,7 +200,7 @@
       border-radius: 10px;
       margin: 10px auto;
       display: block;
-      loading: shaded;
+      loading: lazy;
     }
     .collage {
       display: grid;
@@ -253,8 +276,8 @@
     }
     .floating-cta {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 15px;
+      right: 15px;
       z-index: 1000;
       display: flex;
       flex-direction: column;
@@ -263,7 +286,7 @@
     .floating-cta .cta-button {
       padding: 10px 20px;
       font-size: 1em;
-      min-width: 200px;
+      min-width: 250px;
     }
     .modal, .success-modal {
       display: none;
@@ -328,12 +351,6 @@
     .success-modal-content .optional {
       color: #1e88e5;
     }
-    .timer {
-      color: #d32f2f;
-      font-size: 0.9em;
-      font-weight: bold;
-      margin: 10px 0;
-    }
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -356,6 +373,13 @@
       .hero-content p {
         font-size: 0.9em;
         padding: 0 20px;
+      }
+      .urgency {
+        font-size: 0.95em;
+        max-width: 90%;
+      }
+      .timer {
+        font-size: 1em;
       }
       .hero-cta, .footer-cta {
         flex-direction: column;
@@ -390,6 +414,10 @@
       .review {
         font-size: 0.85em;
       }
+      .social-proof {
+        font-size: 0.95em;
+        max-width: 90%;
+      }
       .collage {
         max-width: 80%;
       }
@@ -418,6 +446,13 @@
       }
       .hero-content p {
         font-size: 0.85em;
+      }
+      .urgency {
+        font-size: 0.9em;
+        max-width: 90%;
+      }
+      .timer {
+        font-size: 0.9em;
       }
       .hero-cta, .footer-cta {
         margin-bottom: 10px;
@@ -463,6 +498,10 @@
       .overview table {
         font-size: 0.85em;
       }
+      .social-proof {
+        font-size: 0.9em;
+        max-width: 90%;
+      }
     }
   </style>
 </head>
@@ -472,10 +511,11 @@
     <div class="hero-content fade-in">
       <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
       <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
+      <p class="urgency">6월 단 1회! 6/15(일) 체험 놓치지 마세요!</p>
+      <div id="countdown" class="timer"></div>
     </div>
     <div class="hero-cta">
-      <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10(토) PM 3~5시</button>
-      <button class="cta-button" onclick="openModal('5/11(일) PM 3~5시')">5/11(일) PM 3~5시</button>
+      <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15(일) PM 3~5시 신청하기</button>
     </div>
   </div>
 
@@ -515,6 +555,7 @@
   <!-- Reviews Section -->
   <div class="section reviews">
     <h2>아이와 부모의 이야기</h2>
+    <p class="social-proof">100+ 가족이 참여한 성장의 여정!</p>
     <div class="review fade-in">
       <p>"자유와 조화를 느꼈어요. 처음 보는 친구들과 어울려 놀면서 새로운 경험을 했어요." – 민서 (12세)</p>
     </div>
@@ -541,8 +582,9 @@
       <tr><td>참가방법</td><td>신청 후 문자 안내</td></tr>
       <tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
-      <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
+      <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</不忘></tr>
       <tr><td>참가 조건</td><td>8~9세 (부모 동반), 10~13세 (독립 가능)</td></tr>
+      <tr><td>체험 빈도</td><td>월 1~4회, 6월은 6/15 단 1회</td></tr>
     </table>
     <p class="camp-info">📌 일일 캠프를 넘어, 계절 캠프에서 더 깊은 모험과 성장이 가능합니다!</p>
   </div>
@@ -581,14 +623,12 @@
 
   <!-- Footer CTA -->
   <div class="section footer-cta">
-    <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10(토) PM 3~5시</button>
-    <button class="cta-button" onclick="openModal('5/11(일) PM 3~5시')">5/11(일) PM 3~5시</button>
+    <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15(일) PM 3~5시 신청하기</button>
   </div>
 
   <!-- Floating CTA -->
   <div class="floating-cta">
-    <button class="cta-button" onclick="openModal('5/10(토) PM 3~5시')">5/10 마감 임박!</button>
-    <button class="cta-button" onclick="openModal('5/11(일) PM 3~5시')">5/11 마감 임박!</button>
+    <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15 단 1회! 마감 임박!</button>
   </div>
 
   <!-- Modal Form -->
@@ -646,7 +686,7 @@
     console.log('EmailJS initialized');
 
     function startCountdown() {
-      const deadline = new Date('2025-05-10T15:00:00').getTime();
+      const deadline = new Date('2025-06-15T15:00:00').getTime();
       const countdown = document.getElementById('countdown');
       if (!countdown) return;
       setInterval(() => {
@@ -654,7 +694,7 @@
         const distance = deadline - now;
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        countdown.textContent = `${days}일 ${hours}시간`;
+        countdown.textContent = `마감까지 ${days}일 ${hours}시간 남음`;
         if (distance < 0) countdown.textContent = '마감됨';
       }, 1000);
     }
