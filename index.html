@@ -25,29 +25,26 @@
     }
     button, input, select, textarea, table, th, td, details, summary {
       font-family: 'SokchoBadaBatang', 'Noto Sans KR', Arial, sans-serif !important;
-    }
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
-    }
-    .hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-      background: rgba(0,0,0,0.5);
-      padding: 15px;
-      border-radius: 5px;
-      max-width: 600px;
-      width: 90%;
-    }
-    .hero-content h1 {
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 중앙 */
+  align-items: center;     /* 수평 중앙 */
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
+}
+.hero-content {
+  /* absolute, top, left, transform 제거 */
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.5);
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 90%;
+}
+      .hero-content h1 {
       font-size: 2.4em;
       font-weight: 700;
       margin: 0 0 10px;
