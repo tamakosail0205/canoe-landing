@@ -32,21 +32,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
     }
     .hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       color: white;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
+      text-shadow: 3px 3px 7px rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
       border-radius: 5px;
-      max-width: 700px;
-      width: 85%;
-      min-height: 200px;
+      max-width: 600px;
+      width: 90%;
+      margin: auto;
       box-sizing: border-box;
     }
     .hero-content h1 {
@@ -72,8 +69,8 @@
       margin: 10px 0;
     }
     .hero-cta {
-      position: absolute;
-      bottom: 30px;
+      position: fixed;
+      bottom: 20px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -219,12 +216,11 @@
     }
     .collage {
       display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
       max-width: 500px;
       margin: 10px auto;
       aspect-ratio: 1/1;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
     }
     .collage-img {
       width: 100%;
@@ -389,13 +385,12 @@
     }
     @media (max-width: 768px) {
       .hero {
-        height: 90vh;
+        height: 85vh;
+        padding-top: 20px;
       }
       .hero-content {
-        top: 50%;
-        width: 85%;
+        width: 90%;
         padding: 15px;
-        min-height: 180px;
       }
       .hero-content h1 {
         font-size: 1.5em;
@@ -410,7 +405,7 @@
         font-size: 1em;
       }
       .hero-cta {
-        bottom: 20px;
+        bottom: 15px;
         max-width: 90%;
         flex-direction: column;
         gap: 8px;
@@ -472,7 +467,7 @@
     }
     @media (max-width: 375px) {
       .hero-content {
-        min-height: 160px;
+        width: 90%;
       }
       .hero-content h1 {
         font-size: 1.4em;
@@ -543,7 +538,6 @@
     <div class="hero-content fade-in">
       <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
       <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
-      <p>8~9세는 부모 1명 동반 필수(최소 2인, 6만원).</p>
       <p class="urgency">6월 단 1회! 6/15(일) 체험 놓치지 마세요!</p>
       <div id="countdown" class="timer"></div>
     </div>
