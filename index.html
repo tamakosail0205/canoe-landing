@@ -32,45 +32,58 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://i.imgur.com/B3EwCsM.jpeg') center/cover no-repeat;
     }
     .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      margin-top: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      border-radius: 5px;
+      max-width: 600px;
+      width: 90%;
     }
     .hero-content h1 {
-      font-size: 2.2em;
+      font-size: 2.4em;
       font-weight: 700;
       margin: 0 0 10px;
     }
     .hero-content p {
       font-size: 1em;
-      max-width: 600px;
-      margin: 0 auto 20px;
+      margin: 0 0 15px;
     }
     .urgency {
       color: #d32f2f;
       font-weight: bold;
       font-size: 1.1em;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-      max-width: 600px;
-      margin: 10px auto;
+      margin: 10px 0;
     }
     .timer {
       color: #d32f2f;
       font-size: 1.2em;
       font-weight: bold;
-      margin: 10px auto;
-      max-width: 600px;
+      margin: 10px 0;
     }
-    .hero-cta, .footer-cta {
+    .hero-cta {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-cta {
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
     .cta-button {
       background: rgba(211, 47, 47, 0.9);
@@ -315,7 +328,7 @@
       cursor: pointer;
       color: #333333;
     }
-    .modal input, .modal select, .modal button, .modal label {
+    .modal input, .modal select, .modal button, .modal label, .modal p {
       width: 100%;
       padding: 8px;
       margin: 8px 0;
@@ -335,6 +348,13 @@
       border: none;
       font-size: 0.9em;
       color: #555;
+    }
+    .modal p.note {
+      color: #d32f2f;
+      font-size: 0.9em;
+      margin: 5px 0;
+      padding: 0;
+      border: none;
     }
     .success-modal-content ul {
       list-style: none;
@@ -360,31 +380,40 @@
       opacity: 1;
       transform: translateY(0);
     }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     @media (max-width: 768px) {
       .hero {
         height: 80vh;
       }
       .hero-content {
-        margin-top: 15px;
+        top: 45%;
+        width: 95%;
+        padding: 10px;
       }
       .hero-content h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
       }
       .hero-content p {
-        font-size: 0.9em;
-        padding: 0 20px;
+        font-size: 0.85em;
       }
       .urgency {
         font-size: 0.95em;
-        max-width: 90%;
       }
       .timer {
         font-size: 1em;
       }
-      .hero-cta, .footer-cta {
+      .hero-cta {
+        bottom: 15px;
+        max-width: 90%;
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 15px;
+      }
+      .footer-cta {
+        flex-direction: column;
+        gap: 8px;
         max-width: 90%;
       }
       .cta-button {
@@ -438,24 +467,20 @@
       }
     }
     @media (max-width: 375px) {
-      .hero-content {
-        margin-top: 10px;
-      }
       .hero-content h1 {
-        font-size: 1.5em;
+        font-size: 1.4em;
       }
       .hero-content p {
-        font-size: 0.85em;
+        font-size: 0.8em;
       }
       .urgency {
         font-size: 0.9em;
-        max-width: 90%;
       }
       .timer {
         font-size: 0.9em;
       }
-      .hero-cta, .footer-cta {
-        margin-bottom: 10px;
+      .hero-cta {
+        bottom: 10px;
         max-width: 100%;
       }
       .cta-button {
@@ -511,6 +536,7 @@
     <div class="hero-content fade-in">
       <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
       <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
+      <p>8~9세는 부모 1명 동반 필수(최소 2인, 6만원).</p>
       <p class="urgency">6월 단 1회! 6/15(일) 체험 놓치지 마세요!</p>
       <div id="countdown" class="timer"></div>
     </div>
@@ -582,8 +608,8 @@
       <tr><td>참가방법</td><td>신청 후 문자 안내</td></tr>
       <tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
-      <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</不忘></tr>
-      <tr><td>참가 조건</td><td>8~9세 (부모 동반 필수), 10~13세 (독립 가능)</td></tr>
+      <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
+      <tr><td>참가 조건</td><td>8~9세 (부모 1명 동반 필수, 최소 2인 6만원), 10~13세 (독립 가능)</td></tr>
       <tr><td>체험 빈도</td><td>월 1~4회, 6월은 6/15 단 1회</td></tr>
     </table>
     <p class="camp-info">📌 일일 캠프를 넘어, 계절 캠프에서 더 깊은 모험과 성장이 가능합니다!</p>
@@ -641,13 +667,15 @@
         <input type="text" id="name" required>
         <label>연락처 <span title="문자 안내용">ℹ️</span></label>
         <input type="tel" id="phone" required>
-        <label>자녀 나이</label>
+        <label>자녀 나이 <span title="8~9세는 부모 1명 동반 필수(최소 2인, 6만원)">ℹ️</span></label>
+        <p class="note" id="ageNote">8~9세는 부모 1명 동반 필수(최소 2인, 6만원).</p>
         <select id="childAge" required>
           <option value="" disabled selected>선택</option>
           <option value="8-9">8~9세 (부모 동반 필수)</option>
           <option value="10-13">10~13세</option>
         </select>
         <label>참여 인원</label>
+        <p class="note" id="participantNote"></p>
         <select id="participants" required>
           <option value="" disabled selected>선택</option>
           <option value="1">1인 (3만원)</option>
@@ -671,6 +699,7 @@
       <h2>신청 완료</h2>
       <ul>
         <li>24시간 내 문자 안내</li>
+        <li>8~9세: 부모 동반 확인</li>
         <li>준비물: 편한 복장, 여분 옷</li>
         <li><span class="optional">장화(선택)</span>: 편안한 체험</li>
         <li>문의: 📞 010-9865-7936 (9AM~6PM)</li>
@@ -732,9 +761,48 @@
         successModal.style.display = 'none';
         closeModal();
         document.getElementById('signupForm').reset();
+        resetParticipantOptions();
       } else {
         console.error('Success modal not found');
       }
+    }
+
+    function resetParticipantOptions() {
+      const participantSelect = document.getElementById('participants');
+      const participantNote = document.getElementById('participantNote');
+      participantSelect.innerHTML = `
+        <option value="" disabled selected>선택</option>
+        <option value="1">1인 (3만원)</option>
+        <option value="2">2인 (6만원)</option>
+        <option value="3">3인 (9만원)</option>
+      `;
+      participantNote.textContent = '';
+    }
+
+    const childAgeSelect = document.getElementById('childAge');
+    const participantSelect = document.getElementById('participants');
+    const participantNote = document.getElementById('participantNote');
+    if (childAgeSelect && participantSelect && participantNote) {
+      childAgeSelect.addEventListener('change', function() {
+        const age = this.value;
+        participantSelect.innerHTML = '';
+        if (age === '8-9') {
+          participantNote.textContent = '8~9세는 부모 1명 동반 필수(최소 2인, 6만원).';
+          participantSelect.innerHTML = `
+            <option value="" disabled selected>선택</option>
+            <option value="2">2인 (6만원)</option>
+            <option value="3">3인 (9만원)</option>
+          `;
+        } else {
+          participantNote.textContent = '';
+          participantSelect.innerHTML = `
+            <option value="" disabled selected>선택</option>
+            <option value="1">1인 (3만원)</option>
+            <option value="2">2인 (6만원)</option>
+            <option value="3">3인 (9만원)</option>
+          `;
+        }
+      });
     }
 
     const form = document.getElementById('signupForm');
@@ -748,6 +816,12 @@
         const participants = document.getElementById('participants').value;
         const date = document.getElementById('date').value;
         const privacyAgree = document.getElementById('privacyAgree').checked;
+
+        if (childAge === '8-9' && participants === '1') {
+          alert('8~9세는 부모 1명 동반 필수입니다. 최소 2인(6만원)을 선택해주세요.');
+          return;
+        }
+
         console.log('Form data:', { name, phone, childAge, participants, date, privacyAgree });
 
         if (!privacyAgree) {
@@ -774,7 +848,6 @@
       console.error('signupForm not found');
     }
 
-    // Fade-in animation on scroll
     const fadeIns = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
