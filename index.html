@@ -69,7 +69,7 @@
       margin: 10px 0;
     }
     .hero-cta {
-      position: fixed;
+      position: absolute;
       bottom: 20px;
       width: 100%;
       display: flex;
@@ -538,12 +538,13 @@
     <div class="hero-content fade-in">
       <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
       <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
-      <p class="urgency">6월 단 1회! 6/15(일) 체험 놓치지 마세요!</p>
-      <div id="countdown" class="timer"></div>
-    </div>
-    <div class="hero-cta">
-      <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15(일) PM 3~5시 신청하기</button>
-    </div>
+          </div>
+    <p class="urgency">7월 매주말 진행! 원하는 날짜를 선택해 신청하세요</p>
+  <div class="hero-cta">
+  <button class="cta-button" onclick="openModal('7/5(토) PM 3~5시')">7/5(토) 신청하기</button>
+  <button class="cta-button" onclick="openModal('7/6(일) PM 3~5시')">7/6(일) 신청하기</button>
+</div>
+
   </div>
 
   <!-- Experience Section -->
@@ -611,7 +612,7 @@
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
       <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
       <tr><td>참가 조건</td><td>8~9세 (부모 1명 동반 필수, 최소 2인 6만원), 10~13세 (독립 가능)</td></tr>
-      <tr><td>체험 빈도</td><td>월 1~4회, 6월은 6/15 단 1회</td></tr>
+      <tr><td>체험 빈도</td><td>7월 매주말 진행 (토/일)</td></tr>
     </table>
     <p class="camp-info">📌 일일 캠프를 넘어, 계절 캠프에서 더 깊은 모험과 성장이 가능합니다!</p>
   </div>
@@ -649,14 +650,16 @@
   </div>
 
   <!-- Footer CTA -->
-  <div class="section footer-cta">
-    <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15(일) PM 3~5시 신청하기</button>
-  </div>
+ <div class="section footer-cta">
+  <button class="cta-button" onclick="openModal('7/5(토) PM 3~5시')">7/5(토) 신청하기</button>
+  <button class="cta-button" onclick="openModal('7/6(일) PM 3~5시')">7/6(일) 신청하기</button>
+</div>
 
   <!-- Floating CTA -->
   <div class="floating-cta">
-    <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15 단 1회! 마감 임박!</button>
-  </div>
+  <button class="cta-button" onclick="openModal('7/5(토) PM 3~5시')">7/5(토) 신청</button>
+  <button class="cta-button" onclick="openModal('7/6(일) PM 3~5시')">7/6(일) 신청</button>
+</div>
 
   <!-- Modal Form -->
   <div id="modal" class="modal">
