@@ -69,8 +69,8 @@
       margin: 10px 0;
     }
     .hero-cta {
-      position: relative;
-      margin-top: 20px;
+      position: fixed;
+      bottom: 20px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -405,7 +405,7 @@
         font-size: 1em;
       }
       .hero-cta {
-        margin-top: 15px;
+        bottom: 15px;
         max-width: 90%;
         flex-direction: column;
         gap: 8px;
@@ -482,7 +482,7 @@
         font-size: 0.9em;
       }
       .hero-cta {
-        margin-top: 10px;
+        bottom: 15px;
         max-width: 100%;
       }
       .cta-button {
@@ -538,12 +538,11 @@
     <div class="hero-content fade-in">
       <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
       <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
-      <p class="urgency">7월 매주말 진행! 7/5(토), 7/6(일) 선착순 마감!</p>
+      <p class="urgency">6월 단 1회! 6/15(일) 체험 놓치지 마세요!</p>
       <div id="countdown" class="timer"></div>
     </div>
     <div class="hero-cta">
-      <button class="cta-button" onclick="openModal('7/5(토) PM 3~5시')">7/5(토) PM 3~5시 신청하기</button>
-      <button class="cta-button" onclick="openModal('7/6(일) PM 3~5시')">7/6(일) PM 3~5시 신청하기</button>
+      <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15(일) PM 3~5시 신청하기</button>
     </div>
   </div>
 
@@ -599,7 +598,7 @@
       <img src="https://i.imgur.com/9PgwdeI.jpeg" alt="후기 이미지 3" class="collage-img">
       <img src="https://i.imgur.com/76S4ndK.jpeg" alt="후기 이미지 4" class="collage-img">
     </div>
-    <img src="https://i.imgur.com/n2sw4Kz.png" alt="공감카드" class="review-img">
+    <img src="https://i.imgur.com/n2CA4Kz.png" alt="공감카드" class="review-img">
     <p>내면 성장을 돕는 공감 카드를 활용합니다.</p>
   </div>
 
@@ -610,9 +609,9 @@
       <tr><td>참가방법</td><td>신청 후 문자 안내</td></tr>
       <tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
       <tr><td>비용</td><td>1인 3만원, 2인 6만원, 3인 9만원</td></tr>
-      <tr><td>체험</td><td>배 만들기, 항해, 정리 공유(2시간)</td></tr>
+      <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
       <tr><td>참가 조건</td><td>8~9세 (부모 1명 동반 필수, 최소 2인 6만원), 10~13세 (독립 가능)</td></tr>
-      <tr><td>체험 빈도</td><td>7월 매주 토/일</td></tr>
+      <tr><td>체험 빈도</td><td>월 1~4회, 6월은 6/15 단 1회</td></tr>
     </table>
     <p class="camp-info">📌 일일 캠프를 넘어, 계절 캠프에서 더 깊은 모험과 성장이 가능합니다!</p>
   </div>
@@ -651,14 +650,12 @@
 
   <!-- Footer CTA -->
   <div class="section footer-cta">
-    <button class="cta-button" onclick="openModal('7/5(토) PM 3~5시')">7/5(토) PM 3~5시 신청하기</button>
-    <button class="cta-button" onclick="openModal('7/6(일) PM 3~5시')">7/6(일) PM 3~5시 신청하기</button>
+    <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15(일) PM 3~5시 신청하기</button>
   </div>
 
   <!-- Floating CTA -->
   <div class="floating-cta">
-    <button class="cta-button" onclick="openModal('7/5(토) PM 3~5시')">7/5 마감 임박</button>
-    <button class="cta-button" onclick="openModal('7/6(일) PM 3~5시')">7/6 마감 임박</button>
+    <button class="cta-button" onclick="openModal('6/15(일) PM 3~5시')">6/15 단 1회! 마감 임박!</button>
   </div>
 
   <!-- Modal Form -->
@@ -675,7 +672,7 @@
         <p class="note" id="ageNote">8~9세는 부모 1명 동반 필수(최소 2인, 6만원).</p>
         <select id="childAge" required>
           <option value="" disabled selected>선택</option>
-          <option value="8-9">8~9세 (부모 동반)</option>
+          <option value="8-9">8~9세 (부모 동반 필수)</option>
           <option value="10-13">10~13세</option>
         </select>
         <label>참여 인원</label>
@@ -689,7 +686,7 @@
         <input type="hidden" id="date" value="">
         <label>
           <input type="checkbox" id="privacyAgree" required>
-          개인정보 수집 동의 <span title="목적: 회원관리, 문자 안내; 항목: 이름, 전화번호; 기간: 6개월">ℹ️</span>
+          개인정보 동의 <span title="목적: 회원관리, 상담, 안내; 항목: 이름, 전화번호; 기간: 6개월">ℹ️</span>
         </label>
         <button type="submit" class="cta-button">신청 완료</button>
       </form>
@@ -700,24 +697,26 @@
   <div id="successModal" class="success-modal">
     <div class="success-modal-content">
       <span class="close" onclick="closeSuccessModal()">×</span>
-      <h2>신청 완료!</h2>
+      <h2>신청 완료</h2>
       <ul>
         <li>24시간 내 문자 안내</li>
         <li>8~9세: 부모 동반 확인</li>
-        <li>준비물: 편한 옷, 여분 옷</li>
+        <li>준비물: 편한 복장, 여분 옷</li>
         <li><span class="optional">장화(선택)</span>: 편안한 체험</li>
-        <li>문의: 📞 010-011-44120 (9AM~10PM)</li>
+        <li>문의: 📞 010-9865-7936 (9AM~6PM)</li>
       </ul>
       <button onclick="closeSuccessModal()" class="cta-button">확인</button>
     </div>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
     console.log('Script loaded');
     emailjs.init("pdoL1uaTJvcQun7eE");
+    console.log('EmailJS initialized');
+
     function startCountdown() {
-      const deadline = new Date('2025-07-05T15:00:00').getTime();
+      const deadline = new Date('2025-06-15T15:00:00').getTime();
       const countdown = document.getElementById('countdown');
       if (!countdown) return;
       setInterval(() => {
@@ -725,7 +724,7 @@
         const distance = deadline - now;
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        countdown.textContent = `마감까지 ${days}일 ${hours}시간`;
+        countdown.textContent = `마감까지 ${days}일 ${hours}시간 남음`;
         if (distance < 0) countdown.textContent = '마감됨';
       }, 1000);
     }
@@ -745,21 +744,15 @@
     function closeModal() {
       console.log('closeModal');
       const modal = document.getElementById('modal');
-      if (modal) {
-        modal.style.display = 'none';
-      } else {
-        console.error('Modal not found');
-      }
+      if (modal) modal.style.display = 'none';
+      else console.error('Modal not found');
     }
 
     function openSuccessModal() {
       console.log('openSuccessModal');
       const successModal = document.getElementById('successModal');
-      if (successModal) {
-        successModal.style.display = 'block';
-      } else {
-        console.error('Success modal not found');
-      }
+      if (successModal) successModal.style.display = 'block';
+      else console.error('Success modal not found');
     }
 
     function closeSuccessModal() {
@@ -787,56 +780,63 @@
       participantNote.textContent = '';
     }
 
-    const childAgeSelect = document.querySelector('#childAge');
-    const participantSelect = document.querySelector('#participants');
-    const participantNote = document.querySelector('#participantNote');
+    const childAgeSelect = document.getElementById('childAge');
+    const participantSelect = document.getElementById('participants');
+    const participantNote = document.getElementById('participantNote');
     if (childAgeSelect && participantSelect && participantNote) {
       childAgeSelect.addEventListener('change', function() {
         const age = this.value;
         participantSelect.innerHTML = '';
         if (age === '8-9') {
-          participantNote.textContent = '8~9세는 부모 1명 동반 필수.';
+          participantNote.textContent = '8~9세는 부모 1명 동반 필수(최소 2인, 6만원).';
           participantSelect.innerHTML = `
-            <option value="" disabled>선택</option>
-            <option value="2인 (6만원)</option>
-            <option value="3인 (9만원)</option>
+            <option value="" disabled selected>선택</option>
+            <option value="2">2인 (6만원)</option>
+            <option value="3">3인 (9만원)</option>
           `;
         } else {
           participantNote.textContent = '';
           participantSelect.innerHTML = `
-            <option value="" disabled>선택</option>
+            <option value="" disabled selected>선택</option>
             <option value="1">1인 (3만원)</option>
             <option value="2">2인 (6만원)</option>
-            <option value="3인 (9만원)</option>
+            <option value="3">3인 (9만원)</option>
           `;
         }
       });
-    } else {
-      console.error('Form elements not found');
     }
 
-    const form = document.querySelector('#signupForm');
+    const form = document.getElementById('signupForm');
     if (form) {
-      form.addEventListener('submit', function(e) => {
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         console.log('Form submitted');
-        const name = document.querySelector('#name').value;
-        const phoneValue = document.querySelector('#phone').value;
-        const childAge = document.querySelector('#childAge').value;
-        const participants = document.querySelector('#participants').value;
-        const date = document.querySelector('#date').value;
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const childAge = document.getElementById('childAge').value;
+        const participants = document.getElementById('participants').value;
+        const date = document.getElementById('date').value;
+        const privacyAgree = document.getElementById('privacyAgree').checked;
+
         if (childAge === '8-9' && participants === '1') {
-          alert('8~9세는 부모 1명 필수입니다. 최소 2인(6만원)을 선택하세요.');
+          alert('8~9세는 부모 1명 동반 필수입니다. 최소 2인(6만원)을 선택해주세요.');
           return;
         }
 
-        console.log('Form data:', { name, phoneValue, childAge, participants, date });
+        console.log('Form data:', { name, phone, childAge, participants, date, privacyAgree });
 
-        emailjs.send('service_123', 'template_456', {
+        if (!privacyAgree) {
+          alert('개인정보 동의 필수');
+          return;
+        }
+
+        emailjs.send('service_abc123', 'template_xyz789', {
           name: name,
-          phone: phoneValue,
+          phone: phone,
+          child_age: childAge,
           participants: participants,
           date: date,
+          privacy_agree: privacyAgree
         }).then(() => {
           console.log('Email sent');
           openSuccessModal();
@@ -846,7 +846,7 @@
         });
       });
     } else {
-      console.error('Form not found');
+      console.error('signupForm not found');
     }
 
     const fadeIns = document.querySelectorAll('.fade-in');
@@ -855,14 +855,13 @@
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
-      }), { threshold: 0.2 });
-    fadeIns.forEach((item) => {
-      observer.observe(item));
-    });
+      });
+    }, { threshold: 0.2 });
+    fadeIns.forEach(item => observer.observe(item));
 
     document.addEventListener('DOMContentLoaded', () => {
       startCountdown();
     });
-</script>
+  </script>
 </body>
 </html>
