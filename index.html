@@ -98,15 +98,8 @@
       transition: background 0.3s;
       min-width: 250px;
     }
-    .cta-button.urgent {
-      background: rgba(255, 87, 34, 0.9);
-      border: 2px solid #d32f2f;
-    }
     .cta-button:hover {
       background: rgba(183, 28, 28, 0.9);
-    }
-    .cta-button.urgent:hover {
-      background: rgba(230, 74, 25, 0.9);
     }
     .section {
       padding: 40px 20px;
@@ -545,16 +538,13 @@
   <!-- Hero Section -->
   <div class="hero">
     <div class="hero-content fade-in">
-      <h1>내가 만든 배로, <br>나만의 항해를 시작하다</h1>
-      <p>공기를 채워 만든 배에, 용기를 담아 띄웁니다. 2시간의 항해가 아이의 마음에 남기는 것은 단순한 체험이 아닌, 스스로 만든 모험과 성장의 이야기입니다.</p>
-      <p class="urgency">7월 매주 주말 진행! 7/12(토), 7/13(일), 7/19(토), 7/20(일) 신청 오픈</p>
+      <h1>내가 만든 배로, 자연 속으로 들어가다</h1>
+      <p>뜨거운 여름, 시원한 강바람과 물놀이 속에서 아이들은 모험하고, 배움을 키웁니다. 내 손으로 만든 배에 올라 노를 저어 나아가는 단 하나의 체험. 지금, 강에서 배우는 여름의 성장 시간.</p>
+      <p class="urgency">7월 매주 주말 진행! 7/12(토), 7/13(일), 7/19(토), 7/20(일), 7/26(토), 7/27(일) 신청 오픈</p>
       <div id="countdown" class="timer"></div>
     </div>
     <div class="hero-cta">
-      <button class="cta-button" onclick="openModal('7/12(토) PM 3~5시')">7/12(토) 신청하기</button>
-      <button class="cta-button" onclick="openModal('7/13(일) PM 3~5시')">7/13(일) 신청하기</button>
-      <button class="cta-button" onclick="openModal('7/19(토) PM 3~5시')">7/19(토) 신청하기</button>
-      <button class="cta-button" onclick="openModal('7/20(일) PM 3~5시')">7/20(일) 신청하기</button>
+      <button class="cta-button" onclick="openModal()">신청하기</button>
     </div>
   </div>
 
@@ -563,18 +553,18 @@
     <h2>2시간의 모험과 성장</h2>
     <div class="experience-item fade-in">
       <img src="https://i.imgur.com/jOznC1t.jpeg" alt="배 만들기">
-      <h3>배 만들기</h3>
-      <p>6만 년 전, 인류는 물 위에 처음 배를 띄웠습니다. 오늘, 아이는 공기 펌프로 직접 배를 만듭니다. 그 손끝에서 오래된 기억이 되살아납니다. 자기 손으로 만든 배에는 생명력이 깃듭니다. 고무 재질로, 안전하게. 그러나 그 안엔 수천 년의 이야기가 흐릅니다.</p>
+      <h3>배를 만들다</h3>
+      <p>6만 년 전 시작된 배의 역사. 아이 스스로 공기 펌프로 배를 만들며, 과거와 연결된 생명의 감각을 깨웁니다.</p>
     </div>
     <div class="experience-item fade-in">
       <img src="https://i.imgur.com/ibCaNiu.jpeg" alt="항해 체험">
-      <h3>항해 체험</h3>
-      <p>완성된 배를 타고, 아이는 혼자서 또는 친구와 함께 물 위를 항해합니다. 스스로 방향을 정하고, 노를 저어 나아갑니다. 이것은 독립의 여정이자, 관계와 흐름을 배우는 시간입니다.</p>
+      <h3>물 위를 나아가다</h3>
+      <p>완성된 배에 올라, 아이 스스로 노를 저어 나아갑니다. 독립과 관계의 감각이 물결 위에서 자랍니다.</p>
     </div>
     <div class="experience-item fade-in">
       <img src="https://i.imgur.com/LaYwe6q.jpeg" alt="감정 나누기">
-      <h3>감정 나누기</h3>
-      <p>모든 항해는 흔들립니다. 그리고 그 안에 마음이 자랍니다. 체험을 마친 아이는 공감카드를 통해 자신의 감정을 말로 꺼내고, 들으며, 뿌리 내립니다. 우리는 함께 나무를 심는 마음으로 대화합니다. 비폭력대화는 그 나무를 돌보는 물이 됩니다. 아이의 내면 성장을 돕습니다.</p>
+      <h3>마음을 나누다</h3>
+      <p>체험을 마친 뒤, 공감카드로 자신의 감정을 나눕니다. 비폭력대화로 감정과 연결되는 법을 배웁니다.</p>
     </div>
   </div>
 
@@ -632,20 +622,28 @@
   <div class="section faq">
     <h2>자주 묻는 질문</h2>
     <details open>
-      <summary>배 만들기는 어떻게 하나요?</summary>
-      <p>아이가 공기 펌프로 안전한 고무 배를 조립합니다.</p>
+      <summary>날씨가 너무 더운데, 아이들이 괜찮을까요?</summary>
+      <p>걱정 마세요. 체험은 시원한 강물 위에서 진행되며, 물놀이와 휴식을 병행합니다. 텐트 그늘, 얼음물, 쿨링타월, 충분한 쉼 시간을 준비하고 있습니다.</p>
     </details>
     <details open>
-      <summary>안전 조치는?</summary>
-      <p>구명조끼 전원 지급, LIFEGUARD 대기, 1:5 강사 비율, 사고 0건.</p>
+      <summary>물놀이를 할 수 있나요?</summary>
+      <p>네! 체험 후 아이들은 물에 발을 담그거나, 간단한 물놀이를 함께 합니다. 물속에서 노는 것은 아이들에게 최고의 자연 쿨링 시간입니다. 수영복 또는 여벌 옷을 챙겨주세요.</p>
     </details>
     <details open>
-      <summary>우천 시 진행되나요?</summary>
-      <p>1mm 이하 진행, 폭우 시 무료 취소/환불.</p>
+      <summary>안전은 어떻게 관리되나요?</summary>
+      <p>모든 활동은 수상안전요원(Lifeguard) 자격을 보유한 강사가 지도합니다. 아이들은 구명조끼 착용 필수, 활동 전 안전교육 진행, 소규모 그룹 단위로 운영되며, 스태프가 항시 관찰합니다.</p>
     </details>
     <details open>
-      <summary>준비물은?</summary>
-      <p>편한 복장, 여분 옷, 장화(선택).</p>
+      <summary>몇 살부터 참여 가능한가요?</summary>
+      <p>초등학교 1학년 이상이면 누구나 참여할 수 있습니다. 저학년의 경우 부모님과 함께 동반 탑승하는 것을 추천드립니다. 하지만 고학년의 경우 혼자 노를 저을 수 있습니다. 이외에도 형제·자매 팀 구성도 가능합니다.</p>
+    </details>
+    <details open>
+      <summary>준비물은 어떻게 되나요?</summary>
+      <p>편한 복장을 추천드리며 여분 옷과 수건을 가져와주세요. 여름에는 물놀이 복장을 추천드리고 이외 계절에는 장화를 지참해주시면 보다 편안한 체험이 가능합니다.</p>
+    </details>
+    <details open>
+      <summary>환불이나 변경은 어떻게 되나요?</summary>
+      <p>참가 3일 전까지는 100% 환불, 이후는 상황에 따라 일부 환불 또는 다음 프로그램으로 1회 변경 가능합니다. (우천, 폭염 등 자연 상황에 따른 일정 변경은 사전 공지 후 협의 진행됩니다)</p>
     </details>
   </div>
 
@@ -662,18 +660,12 @@
 
   <!-- Footer CTA -->
   <div class="section footer-cta">
-    <button class="cta-button" onclick="openModal('7/12(토) PM 3~5시')">7/12(토) 신청하기</button>
-    <button class="cta-button" onclick="openModal('7/13(일) PM 3~5시')">7/13(일) 신청하기</button>
-    <button class="cta-button" onclick="openModal('7/19(토) PM 3~5시')">7/19(토) 신청하기</button>
-    <button class="cta-button" onclick="openModal('7/20(일) PM 3~5시')">7/20(일) 신청하기</button>
+    <button class="cta-button" onclick="openModal()">신청하기</button>
   </div>
 
   <!-- Floating CTA -->
   <div class="floating-cta">
-    <button class="cta-button" onclick="openModal('7/12(토) PM 3~5시')">7/12(토) 신청</button>
-    <button class="cta-button" onclick="openModal('7/13(일) PM 3~5시')">7/13(일) 신청</button>
-    <button class="cta-button" onclick="openModal('7/19(토) PM 3~5시')">7/19(토) 신청</button>
-    <button class="cta-button" onclick="openModal('7/20(일) PM 3~5시')">7/20(일) 신청</button>
+    <button class="cta-button" onclick="openModal()">신청하기</button>
   </div>
 
   <!-- Modal Form -->
@@ -682,6 +674,16 @@
       <span class="close" onclick="closeModal()">×</span>
       <h2>체험 신청</h2>
       <form id="signupForm">
+        <label>체험 날짜</label>
+        <select id="date" required>
+          <option value="" disabled selected>선택</option>
+          <option value="7/12(토) PM 3~5시">7/12(토) PM 3~5시</option>
+          <option value="7/13(일) PM 3~5시">7/13(일) PM 3~5시</option>
+          <option value="7/19(토) PM 3~5시">7/19(토) PM 3~5시</option>
+          <option value="7/20(일) PM 3~5시">7/20(일) PM 3~5시</option>
+          <option value="7/26(토) PM 3~5시">7/26(토) PM 3~5시</option>
+          <option value="7/27(일) PM 3~5시">7/27(일) PM 3~5시</option>
+        </select>
         <label>이름 <span title="문자 안내용">ℹ️</span></label>
         <input type="text" id="name" required>
         <label>연락처 <span title="문자 안내용">ℹ️</span></label>
@@ -701,7 +703,6 @@
           <option value="2">2인 (8만원)</option>
           <option value="3">3인 (12만원)</option>
         </select>
-        <input type="hidden" id="date" value="">
         <label>
           <input type="checkbox" id="privacyAgree" required>
           개인정보 동의 <span title="목적: 회원관리, 상담, 안내; 항목: 이름, 전화번호; 기간: 6개월">ℹ️</span>
@@ -747,15 +748,13 @@
       }, 1000);
     }
 
-    function openModal(date) {
-      console.log('openModal:', date);
+    function openModal() {
+      console.log('openModal');
       const modal = document.getElementById('modal');
-      const dateInput = document.getElementById('date');
-      if (modal && dateInput) {
+      if (modal) {
         modal.style.display = 'block';
-        dateInput.value = date;
       } else {
-        console.error('Modal or date input not found');
+        console.error('Modal not found');
       }
     }
 
