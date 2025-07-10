@@ -315,10 +315,13 @@
       background: #ffffff;
       width: 90%;
       max-width: 350px;
-      margin: 20% auto;
+      margin: 10% auto;
       padding: 20px;
       border-radius: 10px;
       position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
+      min-height: 300px;
     }
     .close {
       position: absolute;
@@ -331,7 +334,7 @@
     .modal input, .modal select, .modal button, .modal label, .modal p {
       width: 100%;
       padding: 8px;
-      margin: 8px 0;
+      margin: 5px 0;
       border: 1px solid #dddddd;
       border-radius: 3px;
       font-size: 0.9em;
@@ -355,6 +358,12 @@
       margin: 5px 0;
       padding: 0;
       border: none;
+    }
+    .modal button.cta-button {
+      position: sticky;
+      bottom: 0;
+      background: #ffffff;
+      z-index: 10;
     }
     .success-modal-content ul {
       list-style: none;
@@ -460,7 +469,14 @@
         font-size: 0.9em;
       }
       .modal-content, .success-modal-content {
-        margin: 30% auto;
+        margin: 10% auto;
+      }
+      .modal input, .modal select, .modal button, .modal label, .modal p {
+        padding: 7px;
+        font-size: 0.85em;
+      }
+      .modal p.note {
+        font-size: 0.85em;
       }
       body {
         font-size: 0.95em;
@@ -530,6 +546,13 @@
       .social-proof {
         font-size: 0.9em;
         max-width: 90%;
+      }
+      .modal input, .modal select, .modal button, .modal label, .modal p {
+        padding: 6px;
+        font-size: 0.8em;
+      }
+      .modal p.note {
+        font-size: 0.8em;
       }
     }
   </style>
@@ -623,7 +646,7 @@
     <h2>자주 묻는 질문</h2>
     <details open>
       <summary>날씨가 너무 더운데, 아이들이 괜찮을까요?</summary>
-      <p>걱정 마세요. 체험은 시원한 강물 위에서 진행되며, 물놀이와 휴식을 병행합니다.</p>
+      <p>걱정 마세요. 체험은 시원한 강물 위에서 진행되며, 물놀이와 휴식을 병행합니다. 텐트 그늘, 얼음물, 쿨링타월, 충분한 쉼 시간을 준비하고 있습니다.</p>
     </details>
     <details open>
       <summary>물놀이를 할 수 있나요?</summary>
@@ -689,14 +712,13 @@
         <label>연락처 <span title="문자 안내용">ℹ️</span></label>
         <input type="tel" id="phone" required>
         <label>자녀 나이 <span title="8~9세는 부모 1명 동반 필수(최소 2인, 8만원)">ℹ️</span></label>
-        <p class="note" id="ageNote">8~9세는 부모 1명 동반 필수(최소 2인, 8만원).</p>
         <select id="childAge" required>
           <option value="" disabled selected>선택</option>
           <option value="8-9">8~9세 (부모 동반 필수)</option>
           <option value="10-13">10~13세</option>
         </select>
         <label>참여 인원</label>
-        <p class="note" id="participantNote"></p>
+        <p class="note" id="formNote"></p>
         <select id="participants" required>
           <option value="" disabled selected>선택</option>
           <option value="1">1인 (4만원)</option>
@@ -787,32 +809,32 @@
 
     function resetParticipantOptions() {
       const participantSelect = document.getElementById('participants');
-      const participantNote = document.getElementById('participantNote');
+      const formNote = document.getElementById('formNote');
       participantSelect.innerHTML = `
         <option value="" disabled selected>선택</option>
         <option value="1">1인 (4만원)</option>
         <option value="2">2인 (8만원)</option>
         <option value="3">3인 (12만원)</option>
       `;
-      participantNote.textContent = '';
+      formNote.textContent = '';
     }
 
     const childAgeSelect = document.getElementById('childAge');
     const participantSelect = document.getElementById('participants');
-    const participantNote = document.getElementById('participantNote');
-    if (childAgeSelect && participantSelect && participantNote) {
+    const formNote = document.getElementById('formNote');
+    if (childAgeSelect && participantSelect && formNote) {
       childAgeSelect.addEventListener('change', function() {
         const age = this.value;
         participantSelect.innerHTML = '';
         if (age === '8-9') {
-          participantNote.textContent = '8~9세는 부모 1명 동반 필수(최소 2인, 8만원).';
+          formNote.textContent = '8~9세는 부모 1명 동반 필수(최소 2인, 8만원).';
           participantSelect.innerHTML = `
             <option value="" disabled selected>선택</option>
             <option value="2">2인 (8만원)</option>
             <option value="3">3인 (12만원)</option>
           `;
         } else {
-          participantNote.textContent = '';
+          formNote.textContent = '';
           participantSelect.innerHTML = `
             <option value="" disabled selected>선택</option>
             <option value="1">1인 (4만원)</option>
@@ -836,16 +858,16 @@
         const privacyAgree = document.getElementById('privacyAgree').checked;
 
         if (childAge === '8-9' && participants === '1') {
-          alert('8~9세는 부모 1명 동반 필수입니다. 최소 2인(8만원)을 선택해주세요.');
+          formNote.textContent = '8~9세는 부모 1명 동반 필수입니다. 최소 2인(8만원)을 선택해주세요.';
+          return;
+        }
+
+        if (!privacyAgree) {
+          formNote.textContent = '개인정보 동의는 필수입니다.';
           return;
         }
 
         console.log('Form data:', { name, phone, childAge, participants, date, privacyAgree });
-
-        if (!privacyAgree) {
-          alert('개인정보 동의 필수');
-          return;
-        }
 
         emailjs.send('service_abc123', 'template_xyz789', {
           name: name,
@@ -859,7 +881,7 @@
           openSuccessModal();
         }).catch((error) => {
           console.error('Email failed:', error);
-          alert('신청 실패, 다시 시도');
+          formNote.textContent = '신청 실패, 다시 시도해주세요.';
         });
       });
     } else {
