@@ -281,6 +281,12 @@
       font-size: 0.9em;
       line-height: 1.3;
     }
+    .note {
+      color: #d32f2f;
+      font-size: 0.85em;
+      margin: 5px 0;
+      padding: 0;
+    }
     .floating-cta {
       position: fixed;
       bottom: 15px;
@@ -459,6 +465,9 @@
       .overview table {
         font-size: 0.9em;
       }
+      .note {
+        font-size: 0.8em;
+      }
       .modal-content, .success-modal-content {
         margin: 10% auto;
       }
@@ -535,6 +544,9 @@
         font-size: 0.9em;
         max-width: 90%;
       }
+      .note {
+        font-size: 0.75em;
+      }
       .modal input, .modal select, .modal button, .modal label, .modal p {
         padding: 6px;
         font-size: 0.8em;
@@ -591,6 +603,7 @@
       <div class="play-button"></div>
     </a>
     <p>영상으로 체험 미리보기!</p>
+    <p class="note">계절별 배가 다릅니다. 6~9월: 패들보드(SUP), 4~5월/10~12월: 접이식 카누/카약. 원하는 배는 사전 문의 필수.</p>
   </div>
 
   <!-- Reviews Section -->
@@ -605,6 +618,9 @@
     </div>
     <div class="review fade-in">
       <p>"도전과 보람을 배웠어요. 무서웠지만 배를 직접 타고 성공했어요!" – 준호 (11세)</p>
+    </div>
+    <div class="review fade-in">
+      <p>"아이가 너무 신났어요! 초1이라 어리지만, 안전하게 즐겼고, 아빠와 뜻깊은 시간을 보냈습니다. 감사합니다!" – 익명 (부모)</p>
     </div>
     <div class="collage">
       <img src="https://i.imgur.com/SFGRjUO.jpeg" alt="후기 이미지 1" class="collage-img">
@@ -624,7 +640,7 @@
       <tr><td>장소</td><td>곡성 죽곡 카누캠핑장</td></tr>
       <tr><td>비용</td><td>1인 4만원, 2인 7만원 (12.5% 할인), 3인 10만원 (16.7% 할인), 4인 이상 추가 1인당 3만원 (예: 4인 13만원)</td></tr>
       <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
-      <tr><td>참가 조건</td><td>8~9세 (부모 1명 동반 필수, 최소 2인 7만원), 10~13세 (독립 가능)</td></tr>
+      <tr><td>참가 조건</td><td>7~9세 (부모 1명 동반 필수, 최소 2인 7만원), 10~13세 (독립 가능)</td></tr>
       <tr><td>체험 일정</td><td>9/27(토), 9/28(일) PM 3~5시</td></tr>
     </table>
     <p class="promotion">9월 특가: 2인 7만원!</p>
@@ -699,12 +715,15 @@
         <input type="text" id="name" required>
         <label>연락처 <span title="문자 안내용">ℹ️</span></label>
         <input type="tel" id="phone" required>
-        <label>자녀 나이 <span title="8~9세는 부모 1명 동반 필수(최소 2인, 7만원)">ℹ️</span></label>
-        <select id="childAge" required>
+        <label>자녀 수 <span title="7~9세는 부모 1명 동반 필수(최소 2인, 7만원), 10세 이상은 단독 가능">ℹ️</span></label>
+        <select id="numberOfChildren" required>
           <option value="" disabled selected>선택</option>
-          <option value="8-9">8~9세 (부모 동반 필수)</option>
-          <option value="10-13">10~13세</option>
+          <option value="1">1명</option>
+          <option value="2">2명</option>
+          <option value="3">3명</option>
+          <option value="4">4명</option>
         </select>
+        <div id="childAges"></div>
         <label>참여 인원</label>
         <p class="note" id="formNote"></p>
         <select id="participants" required>
@@ -730,7 +749,7 @@
       <h2>신청 완료</h2>
       <ul>
         <li>24시간 내 문자 안내</li>
-        <li>8~9세: 부모 동반 확인</li>
+        <li>7~9세: 부모 동반 확인</li>
         <li>준비물: 편한 복장, 여분 옷</li>
         <li><span class="optional">장화(선택)</span>: 편안한 체험</li>
         <li>문의: 📞 010-9865-7936 (9AM~6PM)</li>
@@ -752,6 +771,7 @@
       if (modal && dateInput) {
         modal.style.display = 'block';
         dateInput.value = date;
+        resetParticipantOptions();
       } else {
         console.error('Modal or date input not found');
       }
@@ -786,7 +806,10 @@
 
     function resetParticipantOptions() {
       const participantSelect = document.getElementById('participants');
+      const numberOfChildren = document.getElementById('numberOfChildren');
+      const childAges = document.getElementById('childAges');
       const formNote = document.getElementById('formNote');
+
       participantSelect.innerHTML = `
         <option value="" disabled selected>선택</option>
         <option value="1">1인 (4만원)</option>
@@ -794,35 +817,73 @@
         <option value="3">3인 (10만원)</option>
         <option value="4">4인 이상 (추가 1인당 3만원)</option>
       `;
+      numberOfChildren.value = '';
+      childAges.innerHTML = '';
       formNote.textContent = '';
     }
 
-    const childAgeSelect = document.getElementById('childAge');
+    const numberOfChildrenSelect = document.getElementById('numberOfChildren');
+    const childAgesDiv = document.getElementById('childAges');
     const participantSelect = document.getElementById('participants');
     const formNote = document.getElementById('formNote');
-    if (childAgeSelect && participantSelect && formNote) {
-      childAgeSelect.addEventListener('change', function() {
-        const age = this.value;
-        participantSelect.innerHTML = '';
-        if (age === '8-9') {
-          formNote.textContent = '8~9세는 부모 1명 동반 필수(최소 2인, 7만원).';
-          participantSelect.innerHTML = `
+
+    if (numberOfChildrenSelect && childAgesDiv && participantSelect && formNote) {
+      numberOfChildrenSelect.addEventListener('change', function() {
+        const numChildren = parseInt(this.value) || 0;
+        childAgesDiv.innerHTML = '';
+        formNote.textContent = '';
+        let hasYoungChild = false;
+
+        for (let i = 1; i <= numChildren; i++) {
+          const label = document.createElement('label');
+          label.textContent = `자녀 ${i} 나이`;
+          const select = document.createElement('select');
+          select.name = `childAge${i}`;
+          select.required = true;
+          select.innerHTML = `
             <option value="" disabled selected>선택</option>
-            <option value="2">2인 (7만원)</option>
-            <option value="3">3인 (10만원)</option>
-            <option value="4">4인 이상 (추가 1인당 3만원)</option>
+            <option value="7-9">7~9세 (S 구명조끼)</option>
+            <option value="9-11">9~11세 (L 구명조끼)</option>
+            <option value="12+">12세 이상 (XL 구명조끼)</option>
           `;
-        } else {
-          formNote.textContent = '';
-          participantSelect.innerHTML = `
-            <option value="" disabled selected>선택</option>
-            <option value="1">1인 (4만원)</option>
-            <option value="2">2인 (7만원)</option>
-            <option value="3">3인 (10만원)</option>
-            <option value="4">4인 이상 (추가 1인당 3만원)</option>
-          `;
+          if (i === 1) {
+            select.id = 'firstChildAge';
+          }
+          childAgesDiv.appendChild(label);
+          childAgesDiv.appendChild(select);
+
+          select.addEventListener('change', function() {
+            hasYoungChild = Array.from(childAgesDiv.querySelectorAll('select')).some(sel => sel.value === '7-9');
+            updateParticipantOptions(hasYoungChild, numChildren);
+          });
         }
+
+        updateParticipantOptions(hasYoungChild, numChildren);
       });
+
+      function updateParticipantOptions(hasYoungChild, numChildren) {
+        participantSelect.innerHTML = '';
+        const options = [];
+        options.push('<option value="" disabled selected>선택</option>');
+
+        if (!hasYoungChild) {
+          for (let i = Math.max(1, numChildren); i <= 4; i++) {
+            if (i === 1) options.push('<option value="1">1인 (4만원)</option>');
+            if (i === 2) options.push('<option value="2">2인 (7만원)</option>');
+            if (i === 3) options.push('<option value="3">3인 (10만원)</option>');
+            if (i === 4) options.push('<option value="4">4인 이상 (추가 1인당 3만원)</option>');
+          }
+        } else {
+          formNote.textContent = `7~9세는 부모 1명 동반 필수입니다. 최소 ${numChildren + 1}명을 선택해주세요.`;
+          for (let i = numChildren + 1; i <= 4; i++) {
+            if (i === 2) options.push('<option value="2">2인 (7만원)</option>');
+            if (i === 3) options.push('<option value="3">3인 (10만원)</option>');
+            if (i === 4) options.push('<option value="4">4인 이상 (추가 1인당 3만원)</option>');
+          }
+        }
+
+        participantSelect.innerHTML = options.join('');
+      }
     }
 
     const form = document.getElementById('signupForm');
@@ -832,13 +893,23 @@
         console.log('Form submitted');
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
-        const childAge = document.getElementById('childAge').value;
+        const numberOfChildren = document.getElementById('numberOfChildren').value;
+        const childAges = Array.from(childAgesDiv.querySelectorAll('select')).map(sel => sel.value);
         const participants = document.getElementById('participants').value;
         const date = document.getElementById('date').value;
         const privacyAgree = document.getElementById('privacyAgree').checked;
 
-        if (childAge === '8-9' && participants === '1') {
-          formNote.textContent = '8~9세는 부모 1명 동반 필수입니다. 최소 2인(7만원)을 선택해주세요.';
+        const hasYoungChild = childAges.includes('7-9');
+        const numChildren = parseInt(numberOfChildren) || 0;
+        const numParticipants = parseInt(participants) || 0;
+
+        if (hasYoungChild && numParticipants < numChildren + 1) {
+          formNote.textContent = `7~9세는 부모 1명 동반 필수입니다. 최소 ${numChildren + 1}명을 선택해주세요.`;
+          return;
+        }
+
+        if (numParticipants < numChildren) {
+          formNote.textContent = '참여 인원은 자녀 수 이상이어야 합니다.';
           return;
         }
 
@@ -847,12 +918,18 @@
           return;
         }
 
-        console.log('Form data:', { name, phone, childAge, participants, date, privacyAgree });
+        if (!childAges.every(age => age)) {
+          formNote.textContent = '모든 자녀의 나이를 선택해주세요.';
+          return;
+        }
+
+        console.log('Form data:', { name, phone, numberOfChildren, childAges, participants, date, privacyAgree });
 
         emailjs.send('service_abc123', 'template_xyz789', {
           name: name,
           phone: phone,
-          child_age: childAge,
+          child_count: numberOfChildren,
+          child_ages: childAges.join(', '),
           participants: participants,
           date: date,
           privacy_agree: privacyAgree
