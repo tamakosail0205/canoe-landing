@@ -95,6 +95,22 @@
     .cta-button:hover {
       background: rgba(183, 28, 28, 0.9);
     }
+    .waitlist-button {
+      background: #757575;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+      min-width: 250px;
+    }
+    .waitlist-button:hover {
+      background: #616161;
+    }
     .section {
       padding: 40px 20px;
       max-width: 800px;
@@ -234,6 +250,7 @@
     .team-container {
       display: flex;
       flex-direction: column;
+      alignpiecemeal: true;
       align-items: center;
       gap: 15px;
       margin-top: 20px;
@@ -296,12 +313,12 @@
       flex-direction: column;
       gap: 10px;
     }
-    .floating-cta .cta-button {
+    .floating-cta .cta-button, .floating-cta .waitlist-button {
       padding: 10px 20px;
       font-size: 1em;
       min-width: 250px;
     }
-    .modal, .success-modal {
+    .modal, .success-modal, .waitlist-modal {
       display: none;
       position: fixed;
       top: 0;
@@ -311,7 +328,7 @@
       background: rgba(0,0,0,0.5);
       z-index: 2000;
     }
-    .modal-content, .success-modal-content {
+    .modal-content, .success-modal-content, .waitlist-modal-content {
       background: #ffffff;
       width: 90%;
       max-width: 350px;
@@ -364,6 +381,17 @@
       bottom: 0;
       background: rgba(211, 47, 47, 0.9);
       z-index: 10;
+    }
+    .waitlist-modal-content p {
+      font-size: 0.95em;
+      color: #333;
+      margin: 10px 0;
+    }
+    .waitlist-modal-content .button-container {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     .success-modal-content ul {
       list-style: none;
@@ -422,12 +450,12 @@
         gap: 8px;
         max-width: 90%;
       }
-      .cta-button {
+      .cta-button, .waitlist-button {
         font-size: 0.95em;
         padding: 8px 16px;
         min-width: 100%;
       }
-      .floating-cta .cta-button {
+      .floating-cta .cta-button, .floating-cta .waitlist-button {
         padding: 8px 16px;
         font-size: 0.95em;
         min-width: 220px;
@@ -468,7 +496,7 @@
       .note {
         font-size: 0.8em;
       }
-      .modal-content, .success-modal-content {
+      .modal-content, .success-modal-content, .waitlist-modal-content {
         margin: 10% auto;
       }
       .modal input, .modal select, .modal button, .modal label, .modal p {
@@ -477,6 +505,9 @@
       }
       .modal p.note {
         font-size: 0.85em;
+      }
+      .waitlist-modal-content p {
+        font-size: 0.9em;
       }
       body {
         font-size: 0.95em;
@@ -499,11 +530,11 @@
         bottom: 15px;
         max-width: 100%;
       }
-      .cta-button {
+      .cta-button, .waitlist-button {
         font-size: 0.9em;
         padding: 8px 12px;
       }
-      .floating-cta .cta-button {
+      .floating-cta .cta-button, .floating-cta .waitlist-button {
         padding: 8px 12px;
         font-size: 0.85em;
         min-width: 200px;
@@ -554,6 +585,9 @@
       .modal p.note {
         font-size: 0.8em;
       }
+      .waitlist-modal-content p {
+        font-size: 0.85em;
+      }
     }
   </style>
 </head>
@@ -567,7 +601,7 @@
       <p class="promotion">9월 특가: 2인 7만원!</p>
     </div>
     <div class="hero-cta">
-      <button class="cta-button" onclick="openModal('9/27(토) PM 3~5시')">9/27(토) PM 3~5시 신청하기</button>
+      <button class="waitlist-button" onclick="openWaitlistModal('9/27(토) PM 3~5시')">9/27(토) PM 3~5시 예약대기 신청</button>
       <button class="cta-button" onclick="openModal('9/28(일) PM 3~5시')">9/28(일) PM 3~5시 신청하기</button>
     </div>
   </div>
@@ -641,7 +675,7 @@
       <tr><td>비용</td><td>1인 4만원, 2인 7만원 (12.5% 할인), 3인 10만원 (16.7% 할인), 4인 이상 추가 1인당 3만원 (예: 4인 13만원)</td></tr>
       <tr><td>체험</td><td>배 만들기, 항해, 소감 공유(2시간)</td></tr>
       <tr><td>참가 조건</td><td>7~9세 (부모 1명 동반 필수, 최소 2인 7만원), 10~13세 (독립 가능)</td></tr>
-      <tr><td>체험 일정</td><td>9/27(토), 9/28(일) PM 3~5시</td></tr>
+      <tr><td>체험 일정</td><td>9/27(토) (마감), 9/28(일) PM 3~5시</td></tr>
     </table>
     <p class="promotion">9월 특가: 2인 7만원!</p>
     <p class="camp-info">📌 일일 캠프를 넘어, 계절 캠프에서 더 깊은 모험과 성장이 가능합니다!</p>
@@ -694,14 +728,27 @@
 
   <!-- Footer CTA -->
   <div class="section footer-cta">
-    <button class="cta-button" onclick="openModal('9/27(토) PM 3~5시')">9/27(토) PM 3~5시 신청하기</button>
+    <button class="waitlist-button" onclick="openWaitlistModal('9/27(토) PM 3~5시')">9/27(토) PM 3~5시 예약대기 신청</button>
     <button class="cta-button" onclick="openModal('9/28(일) PM 3~5시')">9/28(일) PM 3~5시 신청하기</button>
   </div>
 
   <!-- Floating CTA -->
   <div class="floating-cta">
-    <button class="cta-button" onclick="openModal('9/27(토) PM 3~5시')">9/27(토) PM 3~5시 신청하기</button>
+    <button class="waitlist-button" onclick="openWaitlistModal('9/27(토) PM 3~5시')">9/27(토) PM 3~5시 예약대기 신청</button>
     <button class="cta-button" onclick="openModal('9/28(일) PM 3~5시')">9/28(일) PM 3~5시 신청하기</button>
+  </div>
+
+  <!-- Waitlist Modal -->
+  <div id="waitlistModal" class="waitlist-modal">
+    <div class="waitlist-modal-content">
+      <span class="close" onclick="closeWaitlistModal()">×</span>
+      <h2>모집 마감 안내</h2>
+      <p>9/27(토) PM 3~5시 모집이 마감되었습니다. 예약대기로 신청하시겠습니까?</p>
+      <div class="button-container">
+        <button class="cta-button" onclick="proceedToWaitlist('9/27(토) PM 3~5시')">예약대기 신청</button>
+        <button class="cta-button" onclick="closeWaitlistModal()">취소</button>
+      </div>
+    </div>
   </div>
 
   <!-- Modal Form -->
@@ -711,6 +758,7 @@
       <h2>체험 신청</h2>
       <form id="signupForm">
         <input type="hidden" id="date">
+        <input type="hidden" id="waitlist">
         <label>이름 <span title="문자 안내용">ℹ️</span></label>
         <input type="text" id="name" required>
         <label>연락처 <span title="문자 안내용">ℹ️</span></label>
@@ -747,7 +795,7 @@
     <div class="success-modal-content">
       <span class="close" onclick="closeSuccessModal()">×</span>
       <h2>신청 완료</h2>
-      <ul>
+      <ul id="successMessage">
         <li>24시간 내 문자 안내</li>
         <li>7~9세: 부모 동반 확인</li>
         <li>준비물: 편한 복장, 여분 옷</li>
@@ -766,14 +814,56 @@
 
     function openModal(date) {
       console.log('openModal', date);
+      if (date === '9/27(토) PM 3~5시') {
+        openWaitlistModal(date);
+      } else {
+        const modal = document.getElementById('modal');
+        const dateInput = document.getElementById('date');
+        const waitlistInput = document.getElementById('waitlist');
+        if (modal && dateInput && waitlistInput) {
+          modal.style.display = 'block';
+          dateInput.value = date;
+          waitlistInput.value = 'false';
+          resetParticipantOptions();
+        } else {
+          console.error('Modal, date input, or waitlist input not found');
+        }
+      }
+    }
+
+    function openWaitlistModal(date) {
+      console.log('openWaitlistModal', date);
+      const waitlistModal = document.getElementById('waitlistModal');
+      if (waitlistModal) {
+        waitlistModal.style.display = 'block';
+      } else {
+        console.error('Waitlist modal not found');
+      }
+    }
+
+    function closeWaitlistModal() {
+      console.log('closeWaitlistModal');
+      const waitlistModal = document.getElementById('waitlistModal');
+      if (waitlistModal) {
+        waitlistModal.style.display = 'none';
+      } else {
+        console.error('Waitlist modal not found');
+      }
+    }
+
+    function proceedToWaitlist(date) {
+      console.log('proceedToWaitlist', date);
       const modal = document.getElementById('modal');
       const dateInput = document.getElementById('date');
-      if (modal && dateInput) {
+      const waitlistInput = document.getElementById('waitlist');
+      if (modal && dateInput && waitlistInput) {
         modal.style.display = 'block';
         dateInput.value = date;
+        waitlistInput.value = 'true';
         resetParticipantOptions();
+        closeWaitlistModal();
       } else {
-        console.error('Modal or date input not found');
+        console.error('Modal, date input, or waitlist input not found');
       }
     }
 
@@ -784,11 +874,23 @@
       else console.error('Modal not found');
     }
 
-    function openSuccessModal() {
-      console.log('openSuccessModal');
+    function openSuccessModal(isWaitlist) {
+      console.log('openSuccessModal', isWaitlist);
       const successModal = document.getElementById('successModal');
-      if (successModal) successModal.style.display = 'block';
-      else console.error('Success modal not found');
+      const successMessage = document.getElementById('successMessage');
+      if (successModal && successMessage) {
+        successMessage.innerHTML = `
+          ${isWaitlist ? '<li>예약대기: 취소 시 연락드립니다.</li>' : ''}
+          <li>24시간 내 문자 안내</li>
+          <li>7~9세: 부모 동반 확인</li>
+          <li>준비물: 편한 복장, 여분 옷</li>
+          <li><span class="optional">장화(선택)</span>: 편안한 체험</li>
+          <li>문의: 📞 010-9865-7936 (9AM~6PM)</li>
+        `;
+        successModal.style.display = 'block';
+      } else {
+        console.error('Success modal or message not found');
+      }
     }
 
     function closeSuccessModal() {
@@ -897,6 +999,7 @@
         const childAges = Array.from(childAgesDiv.querySelectorAll('select')).map(sel => sel.value);
         const participants = document.getElementById('participants').value;
         const date = document.getElementById('date').value;
+        const waitlist = document.getElementById('waitlist').value === 'true';
         const privacyAgree = document.getElementById('privacyAgree').checked;
 
         const hasYoungChild = childAges.includes('7-9');
@@ -923,19 +1026,26 @@
           return;
         }
 
-        console.log('Form data:', { name, phone, numberOfChildren, childAges, participants, date, privacyAgree });
+        const formattedChildAges = childAges.map(age => {
+          if (age === '7-9') return '7-9 (S)';
+          if (age === '9-11') return '9-11 (L)';
+          return '12+ (XL)';
+        }).join(', ');
+
+        console.log('Form data:', { name, phone, child_count: numberOfChildren, child_ages: formattedChildAges, participants, date, waitlist, privacy_agree: privacyAgree });
 
         emailjs.send('service_abc123', 'template_xyz789', {
           name: name,
           phone: phone,
           child_count: numberOfChildren,
-          child_ages: childAges.join(', '),
+          child_ages: formattedChildAges,
           participants: participants,
           date: date,
+          waitlist: waitlist ? '예약대기' : '정상 신청',
           privacy_agree: privacyAgree
         }).then(() => {
           console.log('Email sent');
-          openSuccessModal();
+          openSuccessModal(waitlist);
         }).catch((error) => {
           console.error('Email failed:', error);
           formNote.textContent = '신청 실패, 다시 시도해주세요.';
